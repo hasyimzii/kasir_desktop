@@ -834,8 +834,8 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 		fgSizer12.Add( self.m_staticText26, 0, wx.ALL, 5 )
 
-		self.300 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
-		fgSizer12.Add( self.300, 0, wx.ALL, 5 )
+		self.totalBayar = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer12.Add( self.totalBayar, 0, wx.ALL, 5 )
 
 
 		fgSizer12.Add( ( 0, 0), 1, wx.EXPAND, 5 )
@@ -869,5 +869,15 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 	def __del__( self ):
 		pass
+
+class Appku(wx.App):
+        def OnInit(self):
+                self.frame=LoginFrame(parent=None)
+                self.frame.Show()
+                return True
+        
+
+app=Appku()
+app.MainLoop()
 
 
