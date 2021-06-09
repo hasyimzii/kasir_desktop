@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2021 pada 11.07
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Generation Time: Jun 09, 2021 at 04:59 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order_transaksi`
+-- Table structure for table `order_transaksi`
 --
 
 CREATE TABLE `order_transaksi` (
@@ -38,7 +38,7 @@ CREATE TABLE `order_transaksi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -52,7 +52,7 @@ CREATE TABLE `produk` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `toko`
+-- Table structure for table `toko`
 --
 
 CREATE TABLE `toko` (
@@ -60,10 +60,17 @@ CREATE TABLE `toko` (
   `alamat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `toko`
+--
+
+INSERT INTO `toko` (`idToko`, `alamat`) VALUES
+(1, '(khusus pemilik)');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaksi`
+-- Table structure for table `transaksi`
 --
 
 CREATE TABLE `transaksi` (
@@ -75,7 +82,7 @@ CREATE TABLE `transaksi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -87,11 +94,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`idUser`, `username`, `password`, `jabatan`, `idToko`) VALUES
+(1, 'pemilik', 'pemilik123', 'pemilik', 1);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `order_transaksi`
+-- Indexes for table `order_transaksi`
 --
 ALTER TABLE `order_transaksi`
   ADD PRIMARY KEY (`idOrder`),
@@ -99,84 +113,84 @@ ALTER TABLE `order_transaksi`
   ADD KEY `idProduk` (`idProduk`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`idProduk`);
 
 --
--- Indeks untuk tabel `toko`
+-- Indexes for table `toko`
 --
 ALTER TABLE `toko`
   ADD PRIMARY KEY (`idToko`);
 
 --
--- Indeks untuk tabel `transaksi`
+-- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`idTransaksi`),
   ADD KEY `idUser` (`idUser`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`idUser`),
   ADD KEY `idToko` (`idToko`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `order_transaksi`
+-- AUTO_INCREMENT for table `order_transaksi`
 --
 ALTER TABLE `order_transaksi`
   MODIFY `idOrder` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `idProduk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `toko`
+-- AUTO_INCREMENT for table `toko`
 --
 ALTER TABLE `toko`
-  MODIFY `idToko` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idToko` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `transaksi`
+-- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
   MODIFY `idTransaksi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `order_transaksi`
+-- Constraints for table `order_transaksi`
 --
 ALTER TABLE `order_transaksi`
   ADD CONSTRAINT `idProduk` FOREIGN KEY (`idProduk`) REFERENCES `produk` (`idProduk`),
   ADD CONSTRAINT `idTranskasi` FOREIGN KEY (`idTransaksi`) REFERENCES `transaksi` (`idTransaksi`);
 
 --
--- Ketidakleluasaan untuk tabel `transaksi`
+-- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
 --
--- Ketidakleluasaan untuk tabel `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `idToko` FOREIGN KEY (`idToko`) REFERENCES `toko` (`idToko`);

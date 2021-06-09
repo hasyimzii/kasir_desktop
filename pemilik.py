@@ -1,4 +1,3 @@
-import sqlite3
 import wx
 import wx.xrc
 import wx.grid

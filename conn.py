@@ -1,4 +1,3 @@
-import sqlite3
 from abc import ABC
 #abc = abstract base class
 
