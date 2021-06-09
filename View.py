@@ -32,16 +32,16 @@ class LoginFrame ( wx.Frame ):
 
 		fgSizer1.Add( self.m_staticText3, 0, wx.ALL, 5 )
 
-		self.username = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
-		fgSizer1.Add( self.username, 0, wx.ALL, 5 )
+		self.login_input1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer1.Add( self.login_input1, 0, wx.ALL, 5 )
 
 		self.m_staticText4 = wx.StaticText( self, wx.ID_ANY, u"Password", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText4.Wrap( -1 )
 
 		fgSizer1.Add( self.m_staticText4, 0, wx.ALL, 5 )
 
-		self.password = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
-		fgSizer1.Add( self.password, 0, wx.ALL, 5 )
+		self.login_input2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer1.Add( self.login_input2, 0, wx.ALL, 5 )
 
 		self.loginBtn = wx.Button( self, wx.ID_ANY, u"Login", wx.DefaultPosition, wx.DefaultSize, 0 )
 		fgSizer1.Add( self.loginBtn, 0, wx.ALL, 5 )
@@ -885,12 +885,3 @@ class TambahTransaksiFrame ( wx.Frame ):
 		pass
 
 
-class Appku(wx.App):
-        def OnInit(self):
-                self.frame=LoginFrame(parent=None)
-                self.frame.Show()
-                return True
-        
-
-app=Appku()
-app.MainLoop()

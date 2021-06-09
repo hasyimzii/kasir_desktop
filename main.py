@@ -19,18 +19,26 @@ class Login(View.LoginFrame):
     def __init__(self, parent):
         super().__init__(parent)
     def login(self, event):
-        username = input("Username: ")
-        password = input("Password: ")
+        username = self.login_input1.GetValue()
+        password = self.login_input2.GetValue()
         query = f'SELECT * FROM user WHERE username = "{username}" AND password = "{password}"'
-        hasil = curs.execute(query)
-        wx.MessageBox(hasil)
-        # for row in hasil:
-        #     if username and password in row:
-        #         # jabatan = 
-        # #         if username == "pemilik" 
-                    
-        # else:
-        #     wx.MessageBox(f'Username dan Password Salah')
+        curs.execute(query)
+        data = curs.fetchall()
+        print(data)
+        if data[0][3] == "pemilik":
+            self.subframe = View.PemilikFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+        elif data[0][3] == "manager":
+            self.subframe = View.ManagerFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+        elif data[0][3] == "kasir":
+            self.subframe = View.KasirFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+        else:
+            wx.MessageBox(f'Username dan Password Salah')
 
 app = wx.App()
 frame = Login(None)
