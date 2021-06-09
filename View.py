@@ -132,7 +132,8 @@ class PemilikFrame ( wx.Frame ):
 		event.Skip()
 
 	def exit( self, event ):
-		event.Skip()
+		self.Hide()
+		import main
 
 
 ###########################################################################
@@ -186,9 +187,16 @@ class DataTokoFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
+
 	def __del__( self ):
 		pass
 
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+                pass
 
 ###########################################################################
 ## Class TambahTokoFrame
@@ -229,6 +237,7 @@ class TambahTokoFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button56.Bind( wx.EVT_BUTTON, self.back )
 		self.m_button32.Bind( wx.EVT_BUTTON, self.createToko )
 
 	def __del__( self ):
@@ -236,6 +245,9 @@ class TambahTokoFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
+
 	def createToko( self, event ):
 		event.Skip()
 
@@ -291,8 +303,16 @@ class DataManagerFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -332,10 +352,8 @@ class TambahManagerFrame ( wx.Frame ):
 		self.m_button55.SetBitmap( wx.ArtProvider.GetBitmap( wx.ART_GO_BACK, wx.ART_BUTTON ) )
 		fgSizer6.Add( self.m_button55, 0, wx.ALL, 5 )
 
-		self.m_button21 = wx.Button( self, wx.ID_ANY, u"Tambah Manager", wx.DefaultPosition, wx.DefaultSize, 0 )
-
-		self.m_button21.SetBitmap( wx.ArtProvider.GetBitmap( wx.ART_FILE_SAVE, wx.ART_MENU ) )
-		fgSizer6.Add( self.m_button21, 0, wx.ALL, 5 )
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Submit", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer6.Add( self.m_button32, 0, wx.ALL, 5 )
 
 
 		self.SetSizer( fgSizer6 )
@@ -344,13 +362,17 @@ class TambahManagerFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
-		self.m_button21.Bind( wx.EVT_BUTTON, self.createManager )
+		self.m_button55.Bind( wx.EVT_BUTTON, self.back )
+		self.m_button32.Bind( wx.EVT_BUTTON, self.createManager )
 
 	def __del__( self ):
 		pass
 
 
 	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
+
 	def createManager( self, event ):
 		event.Skip()
 
