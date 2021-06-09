@@ -21,6 +21,7 @@ class LoginFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Login", pos = wx.DefaultPosition, size = wx.Size( 375,159 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer1 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer1.SetFlexibleDirection( wx.BOTH )
@@ -73,6 +74,7 @@ class PemilikFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Menu", pos = wx.DefaultPosition, size = wx.Size( 327,394 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer2 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer2.SetFlexibleDirection( wx.BOTH )
@@ -143,6 +145,7 @@ class DataTokoFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Toko", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -197,6 +200,7 @@ class TambahTokoFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Toko", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer5 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer5.SetFlexibleDirection( wx.BOTH )
@@ -248,6 +252,7 @@ class DataManagerFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Manager", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -302,6 +307,7 @@ class TambahManagerFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Manager", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer6 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer6.SetFlexibleDirection( wx.BOTH )
@@ -361,6 +367,7 @@ class ManagerFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Menu", pos = wx.DefaultPosition, size = wx.Size( 327,394 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer2 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer2.SetFlexibleDirection( wx.BOTH )
@@ -431,6 +438,7 @@ class DataProdukFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Produk", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -485,6 +493,7 @@ class TambahProdukFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Produk", pos = wx.DefaultPosition, size = wx.Size( 347,217 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
@@ -557,6 +566,7 @@ class DataKasirFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Kasir", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
@@ -611,6 +621,7 @@ class TambahKasirFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Kasir", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer6 = wx.FlexGridSizer( 0, 2, 0, 0 )
 		fgSizer6.SetFlexibleDirection( wx.BOTH )
@@ -670,6 +681,7 @@ class KasirFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Menu", pos = wx.DefaultPosition, size = wx.Size( 491,239 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		fgSizer2 = wx.FlexGridSizer( 0, 3, 0, 0 )
 		fgSizer2.SetFlexibleDirection( wx.BOTH )
@@ -736,6 +748,7 @@ class DataTransaksiFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Transaksi", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
@@ -790,6 +803,7 @@ class TambahTransaksiFrame ( wx.Frame ):
 		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Transaksi", pos = wx.DefaultPosition, size = wx.Size( 411,349 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer4 = wx.BoxSizer( wx.VERTICAL )
 
@@ -870,6 +884,7 @@ class TambahTransaksiFrame ( wx.Frame ):
 	def __del__( self ):
 		pass
 
+
 class Appku(wx.App):
         def OnInit(self):
                 self.frame=LoginFrame(parent=None)
@@ -879,5 +894,3 @@ class Appku(wx.App):
 
 app=Appku()
 app.MainLoop()
-
-
