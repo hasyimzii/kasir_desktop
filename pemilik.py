@@ -10,14 +10,14 @@ class Pemilik(View.PemilikFrame):
         super().__init__(parent)
         
     def showToko( self, event ):
-            self.Hide()
-            frame=DataTokoFrame(None)
-            frame.Show()
+            self.subframe = View.PemilikFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
 
     def createToko( self, event ):
-            self.Hide()
-            frame=TambahTokoFrame(None)
-            frame.Show()
+            self.subframe = View.TambahTokoFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
 
     def showManager( self, event ):
             self.Hide()

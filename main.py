@@ -4,6 +4,7 @@ import wx.xrc
 import wx.grid
 import conn
 import View
+import Pemilik
 
 # connection & cursor database
 conn = mysql.connector.connect(
@@ -26,7 +27,7 @@ class Login(View.LoginFrame):
         data = curs.fetchall()
         print(data)
         if data[0][3] == "pemilik":
-            self.subframe = View.PemilikFrame(parent=None)
+            self.subframe = Pemilik(parent=None)
             self.subframe.Show()
             self.Destroy()
         elif data[0][3] == "manager":
@@ -39,6 +40,33 @@ class Login(View.LoginFrame):
             self.Destroy()
         else:
             wx.MessageBox(f'Username dan Password Salah')
+
+class Pemilik(View.PemilikFrame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        
+    def showToko( self, event ):
+            self.subframe = View.DataTokoFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+
+    def createToko( self, event ):
+            self.subframe = View.TambahTokoFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+
+    def showManager( self, event ):
+            self.subframe = View.DataManagerFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+
+    def createManager( self, event ):
+            self.subframe = View.TambahManagerFrame(parent=None)
+            self.subframe.Show()
+            self.Destroy()
+
+    def exit( self, event ):
+            event.Skip()
 
 app = wx.App()
 frame = Login(None)
