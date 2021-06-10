@@ -33,8 +33,15 @@ class Kasir(View.KasirFrame):
         self.Destroy()
 
     def showLaporan(self,event):
-        self.Hide()
-        #dialog
+        query = "SELECT SUM(produk.harga * order_transaksi.jumlahProduk) FROM produk INNER JOIN order_transaksi ON produk.idProduk = order_transaksi.idProduk INNER JOIN transaksi ON order_transaksi.idTransaksi = transaksi.idTransaksi where month(transaksi.tanggal) = month(CURDATE())"
+        curs.execute(query)
+        bulan = curs.fetchall()
+
+        query2 = "SELECT SUM(produk.harga * order_transaksi.jumlahProduk) FROM produk INNER JOIN order_transaksi ON produk.idProduk = order_transaksi.idProduk INNER JOIN transaksi ON order_transaksi.idTransaksi = transaksi.idTransaksi where year(transaksi.tanggal) = year(CURDATE())"
+        curs.execute(query2)
+        tahun = curs.fetchall()
+
+        wx.MessageBox(f'Total penjualan bulan ini : {bulan[0][0]} \nTotal penjualan tahun ini : {tahun[0][0]}')
 
     def exit(self,event):
         self.Destroy()
