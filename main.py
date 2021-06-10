@@ -2,22 +2,15 @@ import mysql.connector
 import wx
 import wx.xrc
 import wx.grid
-import conn
 import View
 
-# connection & cursor database
-conn = mysql.connector.connect(
-    host="localhost",
-    port=3306,
-    user="root",
-    password="",
-    database="pbo2_toko"
-)
+conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="pbo2_toko")
 curs = conn.cursor()
 
 class Login(View.LoginFrame):
     def __init__(self, parent):
         super().__init__(parent)
+
     def login(self, event):
         username = self.login_input1.GetValue()
         password = self.login_input2.GetValue()
@@ -25,14 +18,26 @@ class Login(View.LoginFrame):
         curs.execute(query)
         data = curs.fetchall()
         if data[0][3] == "pemilik":
-            self.Hide()
-            import pemilik
+            from Pemilik import Pemilik
+            self.Destroy()
+            app = wx.App()
+            frame = Pemilik(None)
+            frame.Show()
+            app.MainLoop()
         elif data[0][3] == "manager":
-            self.Hide()
-            import manajer
+            from Manager import Manager
+            self.Destroy()
+            app = wx.App()
+            frame = Manager(None)
+            frame.Show()
+            app.MainLoop()
         elif data[0][3] == "kasir":
-            self.Hide()
-            import kasir
+            from Kasir import Kasir
+            self.Destroy()
+            app = wx.App()
+            frame = Kasir(None)
+            frame.Show()
+            app.MainLoop()
         else:
             wx.MessageBox(f'Username dan Password Salah')
 
