@@ -31,7 +31,7 @@ class Pemilik(View.PemilikFrame):
         self.Destroy()
     def exit( self, event ):
         self.Destroy()
-        import main
+        from main import Login
 
 class DataToko(View.DataTokoFrame):
     def back( self,event):
@@ -70,18 +70,10 @@ class TambahManager(View.TambahManagerFrame):
     def createManager( self, event ): #error id toko gaenek ho :v
             username = self.manager_input1.GetValue()
             password = self.manager_input2.GetValue()
-            idToko =self.id_toko.GetValue()
+            idToko = self.manager_input3.GetValue()
             query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"manager"}","{idToko}")'
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menambahkan!')
-
-# app = wx.App()
-# frame = Pemilik(None)
-# frame.Show()
-# app.MainLoop()
-
-
-
 
 

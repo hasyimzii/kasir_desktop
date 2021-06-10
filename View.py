@@ -322,7 +322,7 @@ class DataManagerFrame ( wx.Frame ):
 class TambahManagerFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Manager", pos = wx.DefaultPosition, size = wx.Size( 346,170 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Manager", pos = wx.DefaultPosition, size = wx.Size( 346,195 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
@@ -347,13 +347,13 @@ class TambahManagerFrame ( wx.Frame ):
 		self.manager_input2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer6.Add( self.manager_input2, 0, wx.ALL, 5 )
 
-		self.id = wx.StaticText( self, wx.ID_ANY, u"Toko ID", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.id.Wrap( -1 )
+		self.m_staticText20 = wx.StaticText( self, wx.ID_ANY, u"Id Toko", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText20.Wrap( -1 )
 
-		fgSizer6.Add( self.id, 0, wx.ALL, 5 )
+		fgSizer6.Add( self.m_staticText20, 0, wx.ALL, 5 )
 
-		self.id_toko = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
-		fgSizer6.Add( self.id_toko, 0, wx.ALL, 5 )
+		self.manager_input3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer6.Add( self.manager_input3, 0, wx.ALL, 5 )
 
 		self.m_button55 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -526,7 +526,7 @@ class DataProdukFrame ( wx.Frame ):
 class TambahProdukFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Produk", pos = wx.DefaultPosition, size = wx.Size( 347,217 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Produk", pos = wx.DefaultPosition, size = wx.Size( 347,268 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
@@ -537,7 +537,7 @@ class TambahProdukFrame ( wx.Frame ):
 		fgSizer8.SetFlexibleDirection( wx.BOTH )
 		fgSizer8.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Jenis", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Jenis Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText9.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText9, 0, wx.ALL, 5 )
@@ -545,7 +545,7 @@ class TambahProdukFrame ( wx.Frame ):
 		self.produk_input1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer8.Add( self.produk_input1, 0, wx.ALL, 5 )
 
-		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"Merk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"Merk Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText10.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText10, 0, wx.ALL, 5 )
@@ -561,7 +561,7 @@ class TambahProdukFrame ( wx.Frame ):
 		self.produk_input3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer8.Add( self.produk_input3, 0, wx.ALL, 5 )
 
-		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"Jumlah stok", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"Stok", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText12.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText12, 0, wx.ALL, 5 )
@@ -574,10 +574,8 @@ class TambahProdukFrame ( wx.Frame ):
 		self.m_button42.SetBitmap( wx.ArtProvider.GetBitmap( wx.ART_GO_BACK, wx.ART_BUTTON ) )
 		fgSizer8.Add( self.m_button42, 0, wx.ALL, 5 )
 
-		self.m_button27 = wx.Button( self, wx.ID_ANY, u"Submit", wx.DefaultPosition, wx.DefaultSize, 0 )
-
-		self.m_button27.SetBitmap( wx.ArtProvider.GetBitmap( wx.ART_FILE_SAVE, wx.ART_MENU ) )
-		fgSizer8.Add( self.m_button27, 0, wx.ALL, 5 )
+		self.m_button36 = wx.Button( self, wx.ID_ANY, u"Submit", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer8.Add( self.m_button36, 0, wx.ALL, 5 )
 
 
 		bSizer3.Add( fgSizer8, 1, wx.EXPAND, 5 )
@@ -590,7 +588,7 @@ class TambahProdukFrame ( wx.Frame ):
 
 		# Connect Events
 		self.m_button42.Bind( wx.EVT_BUTTON, self.back )
-		self.m_button27.Bind( wx.EVT_BUTTON, self.createProduk )
+		self.m_button36.Bind( wx.EVT_BUTTON, self.createProduk )
 
 	def __del__( self ):
 		pass
@@ -674,7 +672,7 @@ class DataKasirFrame ( wx.Frame ):
 class TambahKasirFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Kasir", pos = wx.DefaultPosition, size = wx.Size( 342,164 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Kasir", pos = wx.DefaultPosition, size = wx.Size( 342,199 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
@@ -698,6 +696,14 @@ class TambahKasirFrame ( wx.Frame ):
 
 		self.kasir_input2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer6.Add( self.kasir_input2, 0, wx.ALL, 5 )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Id Toko", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer6.Add( self.m_staticText21, 0, wx.ALL, 5 )
+
+		self.kasir_input3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer6.Add( self.kasir_input3, 0, wx.ALL, 5 )
 
 		self.m_button54 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -847,8 +853,16 @@ class DataTransaksiFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button49.Bind( wx.EVT_BUTTON, self.back )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -869,7 +883,7 @@ class TambahTransaksiFrame ( wx.Frame ):
 		fgSizer12.SetFlexibleDirection( wx.BOTH )
 		fgSizer12.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Kode Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Id Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText21.Wrap( -1 )
 
 		fgSizer12.Add( self.m_staticText21, 0, wx.ALL, 5 )
@@ -942,6 +956,7 @@ class TambahTransaksiFrame ( wx.Frame ):
 		# Connect Events
 		self.m_button34.Bind( wx.EVT_BUTTON, self.tambahOrder )
 		self.m_button35.Bind( wx.EVT_BUTTON, self.bayar )
+		self.m_button43.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
 		pass
@@ -952,6 +967,9 @@ class TambahTransaksiFrame ( wx.Frame ):
 		event.Skip()
 
 	def bayar( self, event ):
+		event.Skip()
+
+	def back( self, event ):
 		event.Skip()
 
 
