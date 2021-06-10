@@ -15,6 +15,7 @@ class Manager(View.ManagerFrame):
         self.subframe = DataProduk(None)
         self.subframe.Show()
         self.Destroy()
+        
 
     def createProduk(self,event):
         self.subframe =TambahProduk(None)
@@ -36,10 +37,21 @@ class Manager(View.ManagerFrame):
         from main import Login
 
 class DataProduk(View.DataProdukFrame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        query = f'SELECT * FROM produk'
+        curs.execute(query)
+        hasil = curs.fetchall()
+        for a in range (5) :
+            b = 0
+            for row in hasil:
+                self.dataProduk.SetCellValue(b, a, str(row[a]))
+                b = b+1
+        
     def back( self,event):
         self.subframe = Manager(None)
         self.subframe.Show()
-        self.Destroy()
+        self.Destroy()        
 
 class TambahProduk(View.TambahProdukFrame):
     def back( self,event):
@@ -58,6 +70,17 @@ class TambahProduk(View.TambahProdukFrame):
         wx.MessageBox(f'Berhasil Menambahkan!')
 		
 class DataKasir(View.DataKasirFrame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        query = f'SELECT idUser,username,idToko FROM user'
+        curs.execute(query)
+        hasil = curs.fetchall()
+        for a in range (3) :
+            b = 0
+            for row in hasil:
+                self.dataKasir.SetCellValue(b, a, str(row[a]))
+                b = b+1
+                
     def back( self,event):
         self.subframe = Manager(None)
         self.subframe.Show()

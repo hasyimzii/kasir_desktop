@@ -51,6 +51,14 @@ class DataTransaksi(View.DataTransaksiFrame):
     def __init__(self, parent, idUser):
         super().__init__(parent)
         self.idUser = idUser
+        query = f'SELECT * FROM transaksi'
+        curs.execute(query)
+        hasil = curs.fetchall()
+        for a in range (3) :
+            b = 0
+            for row in hasil:
+                self.dataTransaksi.SetCellValue(b, a, str(row[a]))
+                b = b+1
     
     def back( self,event):
         self.subframe = Kasir(parent=None, idUser=self.idUser)

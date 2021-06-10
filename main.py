@@ -18,7 +18,7 @@ class Login(View.LoginFrame):
         curs.execute(query)
         data = curs.fetchall()
         if data[0][3] == "pemilik":
-            from Pemilik import Pemilik
+            from pemilik import Pemilik
             self.Destroy()
             app = wx.App()
             frame = Pemilik(None)
@@ -32,7 +32,7 @@ class Login(View.LoginFrame):
             frame.Show()
             app.MainLoop()
         elif data[0][3] == "kasir":
-            from Kasir import Kasir
+            from kasir import Kasir
             self.Destroy()
             app = wx.App()
             frame = Kasir(parent=None, idUser=data[0][0])

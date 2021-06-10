@@ -149,31 +149,33 @@ class DataTokoFrame ( wx.Frame ):
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_grid6 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dataToko = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.m_grid6.CreateGrid( 5, 5 )
-		self.m_grid6.EnableEditing( True )
-		self.m_grid6.EnableGridLines( True )
-		self.m_grid6.EnableDragGridSize( False )
-		self.m_grid6.SetMargins( 0, 0 )
+		self.dataToko.CreateGrid( 5, 2 )
+		self.dataToko.EnableEditing( True )
+		self.dataToko.EnableGridLines( True )
+		self.dataToko.EnableDragGridSize( False )
+		self.dataToko.SetMargins( 0, 0 )
 
 		# Columns
-		self.m_grid6.EnableDragColMove( False )
-		self.m_grid6.EnableDragColSize( True )
-		self.m_grid6.SetColLabelSize( 30 )
-		self.m_grid6.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataToko.EnableDragColMove( False )
+		self.dataToko.EnableDragColSize( True )
+		self.dataToko.SetColLabelValue( 0, u"ID" )
+		self.dataToko.SetColLabelValue( 1, u"Alamat" )
+		self.dataToko.SetColLabelSize( 30 )
+		self.dataToko.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Rows
-		self.m_grid6.EnableDragRowSize( True )
-		self.m_grid6.SetRowLabelSize( 80 )
-		self.m_grid6.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataToko.EnableDragRowSize( True )
+		self.dataToko.SetRowLabelSize( 80 )
+		self.dataToko.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
 
 		# Cell Defaults
-		self.m_grid6.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer1.Add( self.m_grid6, 0, wx.ALL, 5 )
+		self.dataToko.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer1.Add( self.dataToko, 0, wx.ALL, 5 )
 
 		self.m_button50 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -266,31 +268,34 @@ class DataManagerFrame ( wx.Frame ):
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_grid6 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dataManager = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.m_grid6.CreateGrid( 5, 5 )
-		self.m_grid6.EnableEditing( True )
-		self.m_grid6.EnableGridLines( True )
-		self.m_grid6.EnableDragGridSize( False )
-		self.m_grid6.SetMargins( 0, 0 )
+		self.dataManager.CreateGrid( 5, 3 )
+		self.dataManager.EnableEditing( True )
+		self.dataManager.EnableGridLines( True )
+		self.dataManager.EnableDragGridSize( False )
+		self.dataManager.SetMargins( 0, 0 )
 
 		# Columns
-		self.m_grid6.EnableDragColMove( False )
-		self.m_grid6.EnableDragColSize( True )
-		self.m_grid6.SetColLabelSize( 30 )
-		self.m_grid6.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataManager.EnableDragColMove( False )
+		self.dataManager.EnableDragColSize( True )
+		self.dataManager.SetColLabelValue( 0, u"ID" )
+		self.dataManager.SetColLabelValue( 1, u"Username" )
+		self.dataManager.SetColLabelValue( 2, u"IdToko" )
+		self.dataManager.SetColLabelSize( 30 )
+		self.dataManager.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Rows
-		self.m_grid6.EnableDragRowSize( True )
-		self.m_grid6.SetRowLabelSize( 80 )
-		self.m_grid6.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataManager.EnableDragRowSize( True )
+		self.dataManager.SetRowLabelSize( 80 )
+		self.dataManager.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
 
 		# Cell Defaults
-		self.m_grid6.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer1.Add( self.m_grid6, 0, wx.ALL, 5 )
+		self.dataManager.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer1.Add( self.dataManager, 0, wx.ALL, 5 )
 
 		self.m_button50 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -470,31 +475,36 @@ class DataProdukFrame ( wx.Frame ):
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_grid6 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dataProduk = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.m_grid6.CreateGrid( 5, 5 )
-		self.m_grid6.EnableEditing( True )
-		self.m_grid6.EnableGridLines( True )
-		self.m_grid6.EnableDragGridSize( False )
-		self.m_grid6.SetMargins( 0, 0 )
+		self.dataProduk.CreateGrid( 5, 5 )
+		self.dataProduk.EnableEditing( True )
+		self.dataProduk.EnableGridLines( True )
+		self.dataProduk.EnableDragGridSize( False )
+		self.dataProduk.SetMargins( 0, 0 )
 
 		# Columns
-		self.m_grid6.EnableDragColMove( False )
-		self.m_grid6.EnableDragColSize( True )
-		self.m_grid6.SetColLabelSize( 30 )
-		self.m_grid6.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataProduk.EnableDragColMove( False )
+		self.dataProduk.EnableDragColSize( True )
+		self.dataProduk.SetColLabelValue( 0, u"ID" )
+		self.dataProduk.SetColLabelValue( 1, u"Jenis" )
+		self.dataProduk.SetColLabelValue( 2, u"Merk" )
+		self.dataProduk.SetColLabelValue( 3, u"Harga" )
+		self.dataProduk.SetColLabelValue( 4, u"Stok" )
+		self.dataProduk.SetColLabelSize( 30 )
+		self.dataProduk.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Rows
-		self.m_grid6.EnableDragRowSize( True )
-		self.m_grid6.SetRowLabelSize( 80 )
-		self.m_grid6.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataProduk.EnableDragRowSize( True )
+		self.dataProduk.SetRowLabelSize( 80 )
+		self.dataProduk.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
 
 		# Cell Defaults
-		self.m_grid6.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer1.Add( self.m_grid6, 0, wx.ALL, 5 )
+		self.dataProduk.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer1.Add( self.dataProduk, 0, wx.ALL, 5 )
 
 		self.m_button50 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -616,31 +626,34 @@ class DataKasirFrame ( wx.Frame ):
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_grid6 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dataKasir = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.m_grid6.CreateGrid( 5, 5 )
-		self.m_grid6.EnableEditing( True )
-		self.m_grid6.EnableGridLines( True )
-		self.m_grid6.EnableDragGridSize( False )
-		self.m_grid6.SetMargins( 0, 0 )
+		self.dataKasir.CreateGrid( 5, 3 )
+		self.dataKasir.EnableEditing( True )
+		self.dataKasir.EnableGridLines( True )
+		self.dataKasir.EnableDragGridSize( False )
+		self.dataKasir.SetMargins( 0, 0 )
 
 		# Columns
-		self.m_grid6.EnableDragColMove( False )
-		self.m_grid6.EnableDragColSize( True )
-		self.m_grid6.SetColLabelSize( 30 )
-		self.m_grid6.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataKasir.EnableDragColMove( False )
+		self.dataKasir.EnableDragColSize( True )
+		self.dataKasir.SetColLabelValue( 0, u"ID" )
+		self.dataKasir.SetColLabelValue( 1, u"Username" )
+		self.dataKasir.SetColLabelValue( 2,u"ID Toko" )
+		self.dataKasir.SetColLabelSize( 30 )
+		self.dataKasir.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Rows
-		self.m_grid6.EnableDragRowSize( True )
-		self.m_grid6.SetRowLabelSize( 80 )
-		self.m_grid6.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataKasir.EnableDragRowSize( True )
+		self.dataKasir.SetRowLabelSize( 80 )
+		self.dataKasir.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
 
 		# Cell Defaults
-		self.m_grid6.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer1.Add( self.m_grid6, 0, wx.ALL, 5 )
+		self.dataKasir.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer1.Add( self.dataKasir, 0, wx.ALL, 5 )
 
 		self.m_button50 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -816,31 +829,34 @@ class DataTransaksiFrame ( wx.Frame ):
 
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
-		self.m_grid5 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.dataTransaksi = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.m_grid5.CreateGrid( 5, 5 )
-		self.m_grid5.EnableEditing( True )
-		self.m_grid5.EnableGridLines( True )
-		self.m_grid5.EnableDragGridSize( False )
-		self.m_grid5.SetMargins( 0, 0 )
+		self.dataTransaksi.CreateGrid( 5, 3 )
+		self.dataTransaksi.EnableEditing( True )
+		self.dataTransaksi.EnableGridLines( True )
+		self.dataTransaksi.EnableDragGridSize( False )
+		self.dataTransaksi.SetMargins( 0, 0 )
 
 		# Columns
-		self.m_grid5.EnableDragColMove( False )
-		self.m_grid5.EnableDragColSize( True )
-		self.m_grid5.SetColLabelSize( 30 )
-		self.m_grid5.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataTransaksi.EnableDragColMove( False )
+		self.dataTransaksi.EnableDragColSize( True )
+		self.dataTransaksi.SetColLabelValue( 0, u"ID" )
+		self.dataTransaksi.SetColLabelValue( 1, u"Tanggal" )
+		self.dataTransaksi.SetColLabelValue( 2, u"ID User" )
+		self.dataTransaksi.SetColLabelSize( 30 )
+		self.dataTransaksi.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Rows
-		self.m_grid5.EnableDragRowSize( True )
-		self.m_grid5.SetRowLabelSize( 80 )
-		self.m_grid5.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+		self.dataTransaksi.EnableDragRowSize( True )
+		self.dataTransaksi.SetRowLabelSize( 80 )
+		self.dataTransaksi.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
 
 		# Cell Defaults
-		self.m_grid5.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer5.Add( self.m_grid5, 0, wx.ALL, 5 )
+		self.dataTransaksi.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer5.Add( self.dataTransaksi, 0, wx.ALL, 5 )
 
 		self.m_button49 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 

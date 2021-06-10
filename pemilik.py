@@ -34,6 +34,16 @@ class Pemilik(View.PemilikFrame):
         from main import Login
 
 class DataToko(View.DataTokoFrame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        query = f'SELECT * FROM toko WHERE idToko>=2'
+        curs.execute(query)
+        hasil = curs.fetchall()
+        for a in range (2) :
+            b = 0
+            for row in hasil:
+                self.dataToko.SetCellValue(b, a, str(row[a]))
+                b = b+1
     def back( self,event):
         self.subframe = Pemilik(None)
         self.subframe.Show()
@@ -56,6 +66,16 @@ class TambahToko(View.TambahTokoFrame):
 		wx.MessageBox(f'Berhasil Menambahkan!')
 		
 class DataManager(View.DataManagerFrame):
+    def __init__(self,parent):
+        super().__init__(parent)
+        query = f'SELECT idUser,username,idToko FROM user WHERE (jabatan="manager")'
+        curs.execute(query)
+        hasil = curs.fetchall()
+        for a in range (3) :
+            b = 0
+            for row in hasil:
+                self.dataManager.SetCellValue(b, a, str(row[a]))
+                b = b+1
     def back( self,event):
         self.subframe = Pemilik(None)
         self.subframe.Show()
@@ -67,7 +87,7 @@ class TambahManager(View.TambahManagerFrame):
         self.subframe.Show()
         self.Destroy()
 
-    def createManager( self, event ): #error id toko gaenek ho :v
+    def createManager( self, event ):
             username = self.manager_input1.GetValue()
             password = self.manager_input2.GetValue()
             idToko = self.manager_input3.GetValue()
