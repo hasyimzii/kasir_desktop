@@ -28,13 +28,11 @@ class Login(View.LoginFrame):
             self.Hide()
             import pemilik
         elif data[0][3] == "manager":
-            self.subframe = View.ManagerFrame(parent=None)
-            self.subframe.Show()
-            self.Destroy()
+            self.Hide()
+            import manajer
         elif data[0][3] == "kasir":
-            self.subframe = View.KasirFrame(parent=None)
-            self.subframe.Show()
-            self.Destroy()
+            self.Hide()
+            import kasir
         else:
             wx.MessageBox(f'Username dan Password Salah')
 

@@ -132,8 +132,7 @@ class PemilikFrame ( wx.Frame ):
 		event.Skip()
 
 	def exit( self, event ):
-		self.Hide()
-		import main
+		pass
 
 
 ###########################################################################
@@ -195,8 +194,11 @@ class DataTokoFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
-	def back( self, event ):
-                pass
+	def back( self,event):
+                import pemilik
+                self.Hide()
+                Frame=pemilik(None)
+                Frame(Show)
 
 ###########################################################################
 ## Class TambahTokoFrame
@@ -245,8 +247,8 @@ class TambahTokoFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
-	def back( self, event ):
-		event.Skip()
+	def back( self,event ):
+		pass
 
 	def createToko( self, event ):
 		event.Skip()
@@ -311,8 +313,8 @@ class DataManagerFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
-	def back( self, event ):
-		event.Skip()
+	def back( self,event ):
+		pass
 
 
 ###########################################################################
@@ -370,8 +372,8 @@ class TambahManagerFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
-	def back( self, event ):
-		event.Skip()
+	def back( self,event ):
+		pass
 
 	def createManager( self, event ):
 		event.Skip()

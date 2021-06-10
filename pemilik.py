@@ -26,12 +26,9 @@ class Pemilik(View.PemilikFrame):
             self.subframe = View.TambahManagerFrame(parent=None)
             self.subframe.Show()
             self.Destroy()
-    def back(self,event):
-            self.Hide()
-            Frame=PemilikFrame(None)
-            Frame.Show()
     def exit( self, event ):
-            event.Skip()
+            self.Hide()
+            import main
 
 app = wx.App()
 frame = Pemilik(None)
