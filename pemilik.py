@@ -25,7 +25,7 @@ class Pemilik(View.PemilikFrame):
         self.subframe = DataManager(None)
         self.subframe.Show()
         self.Destroy()
-    def createManager( self, event ):#error perlu perbaikan
+    def createManager( self, event ):
         self.subframe = TambahManager(None)
         self.subframe.Show()
         self.Destroy()
@@ -66,6 +66,15 @@ class TambahManager(View.TambahManagerFrame):
         self.subframe = Pemilik(None)
         self.subframe.Show()
         self.Destroy()
+
+    def createManager( self, event ): #error id toko gaenek ho :v
+            username = self.manager_input1.GetValue()
+            password = self.manager_input2.GetValue()
+            idToko =self.id_toko.GetValue()
+            query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"manager"}","{idToko}")'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menambahkan!')
 
 # app = wx.App()
 # frame = Pemilik(None)

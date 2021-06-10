@@ -322,7 +322,7 @@ class DataManagerFrame ( wx.Frame ):
 class TambahManagerFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Manager", pos = wx.DefaultPosition, size = wx.Size( 346,162 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Tambah Manager", pos = wx.DefaultPosition, size = wx.Size( 346,170 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
@@ -346,6 +346,14 @@ class TambahManagerFrame ( wx.Frame ):
 
 		self.manager_input2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer6.Add( self.manager_input2, 0, wx.ALL, 5 )
+
+		self.id = wx.StaticText( self, wx.ID_ANY, u"Toko ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.id.Wrap( -1 )
+
+		fgSizer6.Add( self.id, 0, wx.ALL, 5 )
+
+		self.id_toko = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
+		fgSizer6.Add( self.id_toko, 0, wx.ALL, 5 )
 
 		self.m_button55 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -499,8 +507,16 @@ class DataProdukFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -521,7 +537,7 @@ class TambahProdukFrame ( wx.Frame ):
 		fgSizer8.SetFlexibleDirection( wx.BOTH )
 		fgSizer8.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Kode Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Jenis", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText9.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText9, 0, wx.ALL, 5 )
@@ -529,7 +545,7 @@ class TambahProdukFrame ( wx.Frame ):
 		self.produk_input1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer8.Add( self.produk_input1, 0, wx.ALL, 5 )
 
-		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"Jumlah Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"Merk", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText10.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText10, 0, wx.ALL, 5 )
@@ -545,7 +561,7 @@ class TambahProdukFrame ( wx.Frame ):
 		self.produk_input3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 200,-1 ), 0 )
 		fgSizer8.Add( self.produk_input3, 0, wx.ALL, 5 )
 
-		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"Jenis Produk", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"Jumlah stok", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText12.Wrap( -1 )
 
 		fgSizer8.Add( self.m_staticText12, 0, wx.ALL, 5 )
@@ -572,8 +588,20 @@ class TambahProdukFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button42.Bind( wx.EVT_BUTTON, self.back )
+		self.m_button27.Bind( wx.EVT_BUTTON, self.createProduk )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
+
+	def createProduk( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -627,8 +655,16 @@ class DataKasirFrame ( wx.Frame ):
 
 		self.Centre( wx.BOTH )
 
+		# Connect Events
+		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
+
 	def __del__( self ):
 		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
 
 
 ###########################################################################
@@ -678,6 +714,7 @@ class TambahKasirFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button54.Bind( wx.EVT_BUTTON, self.back )
 		self.m_button32.Bind( wx.EVT_BUTTON, self.createKasir )
 
 	def __del__( self ):
@@ -685,6 +722,9 @@ class TambahKasirFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def back( self, event ):
+		event.Skip()
+
 	def createKasir( self, event ):
 		event.Skip()
 
