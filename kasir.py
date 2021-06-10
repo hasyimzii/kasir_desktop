@@ -8,6 +8,9 @@ from datetime import datetime
 conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="pbo2_toko")
 curs = conn.cursor()
 
+conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="pbo2_toko")
+curs = conn.cursor()
+
 class Kasir(View.KasirFrame):
     def __init__(self, parent, idUser):
         super().__init__(parent)
