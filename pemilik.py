@@ -82,6 +82,9 @@ class DetailToko(View.DetailTokoFrame):
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menghapus!')
+            frame = DataToko(None)
+            frame.Show()
+            self.Destroy()
         else :
             pass
     
@@ -155,6 +158,9 @@ class DetailManager(View.DetailManagerFrame):
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menghapus!')
+            frame = DataManager(None)
+            frame.Show()
+            self.Destroy()
         else :
             pass
     

@@ -99,6 +99,9 @@ class DetailProduk(View.DetailProdukFrame):
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menghapus!')
+            frame = DataProduk(None)
+            frame.Show()
+            self.Destroy()
         else :
             pass
     
@@ -172,6 +175,9 @@ class DetailKasir(View.DetailKasirFrame):
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menghapus!')
+            frame = DataKasir(None)
+            frame.Show()
+            self.Destroy()
         else :
             pass
     
