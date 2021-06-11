@@ -16,7 +16,6 @@ class Manager(View.ManagerFrame):
         self.subframe.Show()
         self.Destroy()
         
-
     def createProduk(self,event):
         self.subframe =TambahProduk(None)
         self.subframe.Show()
@@ -43,15 +42,15 @@ class DataProduk(View.DataProdukFrame):
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (5) :
-            b = 0
+            self.baris = 0
             for row in hasil:
-                self.dataProduk.SetCellValue(b, a, str(row[a]))
-                b = b+1
+                self.dataProduk.SetCellValue(self.baris, a, str(row[a]))
+                self.baris = self.baris+1
         
     def back( self,event):
         self.subframe = Manager(None)
         self.subframe.Show()
-        self.Destroy()        
+        self.Destroy() 
 
 class TambahProduk(View.TambahProdukFrame):
     def back( self,event):
@@ -76,10 +75,10 @@ class DataKasir(View.DataKasirFrame):
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (3) :
-            b = 0
+            self.baris = 0
             for row in hasil:
-                self.dataKasir.SetCellValue(b, a, str(row[a]))
-                b = b+1
+                self.dataKasir.SetCellValue(self.baris, a, str(row[a]))
+                self.baris = self.baris+1
                 
     def back( self,event):
         self.subframe = Manager(None)

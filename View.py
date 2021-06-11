@@ -142,17 +142,35 @@ class PemilikFrame ( wx.Frame ):
 class DataTokoFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Toko", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Toko", pos = wx.DefaultPosition, size = wx.Size( 514,281 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
+		fgSizer10 = wx.FlexGridSizer( 0, 3, 0, 0 )
+		fgSizer10.SetFlexibleDirection( wx.BOTH )
+		fgSizer10.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Masukkan ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer10.Add( self.m_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.dataToko_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 60,-1 ), 0 )
+		fgSizer10.Add( self.dataToko_input, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer10.Add( self.m_button32, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		bSizer1.Add( fgSizer10, 1, wx.EXPAND, 5 )
+
 		self.dataToko = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataToko.CreateGrid( 5, 2 )
+		self.dataToko.CreateGrid( 5, 5 )
 		self.dataToko.EnableEditing( True )
 		self.dataToko.EnableGridLines( True )
 		self.dataToko.EnableDragGridSize( False )
@@ -161,8 +179,6 @@ class DataTokoFrame ( wx.Frame ):
 		# Columns
 		self.dataToko.EnableDragColMove( False )
 		self.dataToko.EnableDragColSize( True )
-		self.dataToko.SetColLabelValue( 0, u"ID" )
-		self.dataToko.SetColLabelValue( 1, u"Alamat" )
 		self.dataToko.SetColLabelSize( 30 )
 		self.dataToko.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -189,6 +205,7 @@ class DataTokoFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button32.Bind( wx.EVT_BUTTON, self.detailToko )
 		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -196,6 +213,9 @@ class DataTokoFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def detailToko( self, event ):
+		event.Skip()
+
 	def back( self, event ):
 		event.Skip()
 
@@ -261,17 +281,35 @@ class TambahTokoFrame ( wx.Frame ):
 class DataManagerFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Manager", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Manager", pos = wx.DefaultPosition, size = wx.Size( 514,284 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
+		fgSizer10 = wx.FlexGridSizer( 0, 3, 0, 0 )
+		fgSizer10.SetFlexibleDirection( wx.BOTH )
+		fgSizer10.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Masukkan ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer10.Add( self.m_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.dataManager_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 60,-1 ), 0 )
+		fgSizer10.Add( self.dataManager_input, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer10.Add( self.m_button32, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		bSizer1.Add( fgSizer10, 1, wx.EXPAND, 5 )
+
 		self.dataManager = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataManager.CreateGrid( 5, 3 )
+		self.dataManager.CreateGrid( 5, 5 )
 		self.dataManager.EnableEditing( True )
 		self.dataManager.EnableGridLines( True )
 		self.dataManager.EnableDragGridSize( False )
@@ -280,9 +318,6 @@ class DataManagerFrame ( wx.Frame ):
 		# Columns
 		self.dataManager.EnableDragColMove( False )
 		self.dataManager.EnableDragColSize( True )
-		self.dataManager.SetColLabelValue( 0, u"ID" )
-		self.dataManager.SetColLabelValue( 1, u"Username" )
-		self.dataManager.SetColLabelValue( 2, u"IdToko" )
 		self.dataManager.SetColLabelSize( 30 )
 		self.dataManager.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -309,6 +344,7 @@ class DataManagerFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button32.Bind( wx.EVT_BUTTON, self.detailManager )
 		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -316,6 +352,9 @@ class DataManagerFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def detailManager( self, event ):
+		event.Skip()
+
 	def back( self, event ):
 		event.Skip()
 
@@ -468,12 +507,30 @@ class ManagerFrame ( wx.Frame ):
 class DataProdukFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Produk", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Produk", pos = wx.DefaultPosition, size = wx.Size( 514,276 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
+
+		fgSizer10 = wx.FlexGridSizer( 0, 3, 0, 0 )
+		fgSizer10.SetFlexibleDirection( wx.BOTH )
+		fgSizer10.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Masukkan ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer10.Add( self.m_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.dataProduk_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 60,-1 ), 0 )
+		fgSizer10.Add( self.dataProduk_input, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer10.Add( self.m_button32, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		bSizer1.Add( fgSizer10, 1, wx.EXPAND, 5 )
 
 		self.dataProduk = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -487,11 +544,6 @@ class DataProdukFrame ( wx.Frame ):
 		# Columns
 		self.dataProduk.EnableDragColMove( False )
 		self.dataProduk.EnableDragColSize( True )
-		self.dataProduk.SetColLabelValue( 0, u"ID" )
-		self.dataProduk.SetColLabelValue( 1, u"Jenis" )
-		self.dataProduk.SetColLabelValue( 2, u"Merk" )
-		self.dataProduk.SetColLabelValue( 3, u"Harga" )
-		self.dataProduk.SetColLabelValue( 4, u"Stok" )
 		self.dataProduk.SetColLabelSize( 30 )
 		self.dataProduk.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -518,6 +570,7 @@ class DataProdukFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button32.Bind( wx.EVT_BUTTON, self.detailProduk )
 		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -525,6 +578,9 @@ class DataProdukFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def detailProduk( self, event ):
+		event.Skip()
+
 	def back( self, event ):
 		event.Skip()
 
@@ -619,17 +675,35 @@ class TambahProdukFrame ( wx.Frame ):
 class DataKasirFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Kasir", pos = wx.DefaultPosition, size = wx.Size( 514,264 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Kasir", pos = wx.DefaultPosition, size = wx.Size( 514,278 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 
+		fgSizer10 = wx.FlexGridSizer( 0, 3, 0, 0 )
+		fgSizer10.SetFlexibleDirection( wx.BOTH )
+		fgSizer10.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Masukkan ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer10.Add( self.m_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.dataKasir_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 60,-1 ), 0 )
+		fgSizer10.Add( self.dataKasir_input, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer10.Add( self.m_button32, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		bSizer1.Add( fgSizer10, 1, wx.EXPAND, 5 )
+
 		self.dataKasir = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataKasir.CreateGrid( 5, 3 )
+		self.dataKasir.CreateGrid( 5, 5 )
 		self.dataKasir.EnableEditing( True )
 		self.dataKasir.EnableGridLines( True )
 		self.dataKasir.EnableDragGridSize( False )
@@ -638,9 +712,6 @@ class DataKasirFrame ( wx.Frame ):
 		# Columns
 		self.dataKasir.EnableDragColMove( False )
 		self.dataKasir.EnableDragColSize( True )
-		self.dataKasir.SetColLabelValue( 0, u"ID" )
-		self.dataKasir.SetColLabelValue( 1, u"Username" )
-		self.dataKasir.SetColLabelValue( 2,u"ID Toko" )
 		self.dataKasir.SetColLabelSize( 30 )
 		self.dataKasir.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -667,6 +738,7 @@ class DataKasirFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button32.Bind( wx.EVT_BUTTON, self.detailKasir )
 		self.m_button50.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -674,8 +746,62 @@ class DataKasirFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def detailKasir( self, event ):
+		event.Skip()
+
 	def back( self, event ):
 		event.Skip()
+
+
+###########################################################################
+## Class DetailKasirFrame
+###########################################################################
+
+class DetailKasirFrame ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Detail Kasir", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		fgSizer16 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer16.SetFlexibleDirection( wx.BOTH )
+		fgSizer16.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText26 = wx.StaticText( self, wx.ID_ANY, u"Username", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText26.Wrap( -1 )
+
+		fgSizer16.Add( self.m_staticText26, 0, wx.ALL, 5 )
+
+		self.m_staticText27 = wx.StaticText( self, wx.ID_ANY, u"x", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText27.Wrap( -1 )
+
+		fgSizer16.Add( self.m_staticText27, 0, wx.ALL, 5 )
+
+		self.m_staticText28 = wx.StaticText( self, wx.ID_ANY, u"Alamat Toko", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText28.Wrap( -1 )
+
+		fgSizer16.Add( self.m_staticText28, 0, wx.ALL, 5 )
+
+		self.m_staticText29 = wx.StaticText( self, wx.ID_ANY, u"x", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText29.Wrap( -1 )
+
+		fgSizer16.Add( self.m_staticText29, 0, wx.ALL, 5 )
+
+		self.m_button38 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer16.Add( self.m_button38, 0, wx.ALL, 5 )
+
+		self.m_button39 = wx.Button( self, wx.ID_ANY, u"Delete", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer16.Add( self.m_button39, 0, wx.ALL, 5 )
+
+
+		self.SetSizer( fgSizer16 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+	def __del__( self ):
+		pass
 
 
 ###########################################################################
@@ -822,17 +948,35 @@ class KasirFrame ( wx.Frame ):
 class DataTransaksiFrame ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Transaksi", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Data Transaksi", pos = wx.DefaultPosition, size = wx.Size( 500,275 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 
 		bSizer5 = wx.BoxSizer( wx.VERTICAL )
 
+		fgSizer10 = wx.FlexGridSizer( 0, 3, 0, 0 )
+		fgSizer10.SetFlexibleDirection( wx.BOTH )
+		fgSizer10.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		self.m_staticText21 = wx.StaticText( self, wx.ID_ANY, u"Masukkan ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText21.Wrap( -1 )
+
+		fgSizer10.Add( self.m_staticText21, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.dataTransaksi_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 60,-1 ), 0 )
+		fgSizer10.Add( self.dataTransaksi_input, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+		self.m_button32 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer10.Add( self.m_button32, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+
+		bSizer5.Add( fgSizer10, 1, wx.EXPAND, 5 )
+
 		self.dataTransaksi = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataTransaksi.CreateGrid( 5, 3 )
+		self.dataTransaksi.CreateGrid( 5, 5 )
 		self.dataTransaksi.EnableEditing( True )
 		self.dataTransaksi.EnableGridLines( True )
 		self.dataTransaksi.EnableDragGridSize( False )
@@ -841,9 +985,6 @@ class DataTransaksiFrame ( wx.Frame ):
 		# Columns
 		self.dataTransaksi.EnableDragColMove( False )
 		self.dataTransaksi.EnableDragColSize( True )
-		self.dataTransaksi.SetColLabelValue( 0, u"ID" )
-		self.dataTransaksi.SetColLabelValue( 1, u"Tanggal" )
-		self.dataTransaksi.SetColLabelValue( 2, u"ID User" )
 		self.dataTransaksi.SetColLabelSize( 30 )
 		self.dataTransaksi.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
@@ -870,6 +1011,7 @@ class DataTransaksiFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
+		self.m_button32.Bind( wx.EVT_BUTTON, self.detailTransaksi )
 		self.m_button49.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -877,8 +1019,63 @@ class DataTransaksiFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
+	def detailTransaksi( self, event ):
+		event.Skip()
+
 	def back( self, event ):
 		event.Skip()
+
+
+###########################################################################
+## Class DetailTransaksiFrame
+###########################################################################
+
+class DetailTransaksiFrame ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Detail Transaksi", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		bSizer8 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_grid6 = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+		# Grid
+		self.m_grid6.CreateGrid( 5, 5 )
+		self.m_grid6.EnableEditing( True )
+		self.m_grid6.EnableGridLines( True )
+		self.m_grid6.EnableDragGridSize( False )
+		self.m_grid6.SetMargins( 0, 0 )
+
+		# Columns
+		self.m_grid6.EnableDragColMove( False )
+		self.m_grid6.EnableDragColSize( True )
+		self.m_grid6.SetColLabelSize( 30 )
+		self.m_grid6.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Rows
+		self.m_grid6.EnableDragRowSize( True )
+		self.m_grid6.SetRowLabelSize( 80 )
+		self.m_grid6.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+		# Label Appearance
+
+		# Cell Defaults
+		self.m_grid6.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+		bSizer8.Add( self.m_grid6, 0, wx.ALL, 5 )
+
+		self.m_button37 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer8.Add( self.m_button37, 0, wx.ALL, 5 )
+
+
+		self.SetSizer( bSizer8 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+	def __del__( self ):
+		pass
 
 
 ###########################################################################

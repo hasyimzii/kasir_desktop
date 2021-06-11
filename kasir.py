@@ -55,10 +55,10 @@ class DataTransaksi(View.DataTransaksiFrame):
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (3) :
-            b = 0
+            self.baris = 0
             for row in hasil:
-                self.dataTransaksi.SetCellValue(b, a, str(row[a]))
-                b = b+1
+                self.dataTransaksi.SetCellValue(self.baris, a, str(row[a]))
+                self.baris = self.baris+1
     
     def back( self,event):
         self.subframe = Kasir(parent=None, idUser=self.idUser)

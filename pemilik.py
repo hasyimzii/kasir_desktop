@@ -40,10 +40,11 @@ class DataToko(View.DataTokoFrame):
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (2) :
-            b = 0
+            self.baris = 0
             for row in hasil:
-                self.dataToko.SetCellValue(b, a, str(row[a]))
-                b = b+1
+                self.dataToko.SetCellValue(self.baris, a, str(row[a]))
+                self.baris = self.baris+1
+        
     def back( self,event):
         self.subframe = Pemilik(None)
         self.subframe.Show()
@@ -72,10 +73,11 @@ class DataManager(View.DataManagerFrame):
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (3) :
-            b = 0
+            self.baris = 0
             for row in hasil:
-                self.dataManager.SetCellValue(b, a, str(row[a]))
-                b = b+1
+                self.dataManager.SetCellValue(self.baris, a, str(row[a]))
+                self.baris = self.baris+1
+
     def back( self,event):
         self.subframe = Pemilik(None)
         self.subframe.Show()
