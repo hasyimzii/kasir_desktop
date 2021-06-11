@@ -36,7 +36,6 @@ class Pemilik(View.PemilikFrame):
 class DataToko(View.DataTokoFrame):
     def __init__(self,parent):
         super().__init__(parent)
-        self.dataToko.CreateGrid( 5, 2 )
         self.dataToko.SetColLabelValue( 0, u"ID" )
         self.dataToko.SetColLabelValue( 1, u"Alamat" )
         query = f'SELECT * FROM toko WHERE idToko>=2'
@@ -50,7 +49,7 @@ class DataToko(View.DataTokoFrame):
     
     def detailToko( self, event ):
         idToko = self.dataToko_input.GetValue()
-        frame = DetailToko(None)
+        frame = DetailToko(parent=None, id=idToko)
         frame.Show()
         self.Destroy()
 
@@ -59,7 +58,33 @@ class DataToko(View.DataTokoFrame):
         frame.Show()
         self.Destroy()
 
-class DetailToko(View.DetailTokoFrame)
+class DetailToko(View.DetailTokoFrame):
+    def __init__(self, parent, id):
+        super().__init__(parent)
+        self.idToko = id
+
+        query = f'SELECT * FROM toko WHERE idToko = {self.idToko}'
+        curs.execute(query)
+        hasil = curs.fetchall()
+
+        self.dtoko_input1.SetValue(str(hasil[0][0]))
+        self.dtoko_input2.SetValue(str(hasil[0][1]))
+    
+    def deleteToko(self, event):
+        dlg = wx.MessageDialog(self, 'Hapus Data?', 'Information', style=wx.YES_NO)
+        retval = dlg.ShowModal()
+        if retval == wx.ID_YES:
+            query = f'DELETE FROM toko WHERE idToko = {self.idToko}'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menghapus!')
+        else :
+            pass
+    
+    def back( self,event):
+        frame = DataToko(None)
+        frame.Show()
+        self.Destroy()
 
 class TambahToko(View.TambahTokoFrame):
 	def __init__(self, parent):
@@ -80,7 +105,6 @@ class TambahToko(View.TambahTokoFrame):
 class DataManager(View.DataManagerFrame):
     def __init__(self,parent):
         super().__init__(parent)
-        self.dataManager.CreateGrid( 5, 3 )
         self.dataManager.SetColLabelValue( 0, u"ID" )
         self.dataManager.SetColLabelValue( 1, u"Username" )
         self.dataManager.SetColLabelValue( 2, u"IdToko" )

@@ -254,7 +254,7 @@ class DataTokoFrame ( wx.Frame ):
 		self.dataToko = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataToko.CreateGrid( 5, 5 )
+		self.dataToko.CreateGrid( 5, 2 )
 		self.dataToko.EnableEditing( True )
 		self.dataToko.EnableGridLines( True )
 		self.dataToko.EnableDragGridSize( False )
@@ -321,6 +321,106 @@ class DataTokoFrame ( wx.Frame ):
 
 	# Virtual event handlers, overide them in your derived class
 	def detailToko( self, event ):
+		event.Skip()
+
+	def back( self, event ):
+		event.Skip()
+
+
+###########################################################################
+## Class DetailTokoFrame
+###########################################################################
+
+class DetailTokoFrame ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 720,480 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
+		self.SetBackgroundColour( wx.Colour( 10, 190, 154 ) )
+
+		bSizer4 = wx.BoxSizer( wx.VERTICAL )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		self.m_staticText101 = wx.StaticText( self, wx.ID_ANY, u"DETAIL TOKO", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText101.Wrap( -1 )
+
+		self.m_staticText101.SetFont( wx.Font( 24, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText101.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		bSizer4.Add( self.m_staticText101, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 15 )
+
+		fgSizer5 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer5.SetFlexibleDirection( wx.BOTH )
+		fgSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		fgSizer5.SetMinSize( wx.Size( -1,80 ) )
+		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"ID TOKO", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11.Wrap( -1 )
+
+		self.m_staticText11.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		fgSizer5.Add( self.m_staticText11, 0, wx.ALL, 5 )
+
+		self.dtoko_input1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer5.Add( self.dtoko_input1, 0, wx.ALL, 5 )
+
+		self.m_staticText14 = wx.StaticText( self, wx.ID_ANY, u"ALAMAT", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText14.Wrap( -1 )
+
+		self.m_staticText14.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText14.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		fgSizer5.Add( self.m_staticText14, 0, wx.ALL, 5 )
+
+		self.dtoko_input2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer5.Add( self.dtoko_input2, 0, wx.ALL, 5 )
+
+
+		bSizer4.Add( fgSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
+
+		bSizer5 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_button5 = wx.Button( self, wx.ID_ANY, u"Hapus", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
+		self.m_button5.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_button5.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.m_button5.SetBackgroundColour( wx.Colour( 255, 51, 56 ) )
+
+		bSizer5.Add( self.m_button5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
+
+		self.m_button51 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
+		self.m_button51.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_button51.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.m_button51.SetBackgroundColour( wx.Colour( 79, 203, 12 ) )
+
+		bSizer5.Add( self.m_button51, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer4.Add( bSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+		self.SetSizer( bSizer4 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.m_button5.Bind( wx.EVT_BUTTON, self.deleteToko )
+		self.m_button51.Bind( wx.EVT_BUTTON, self.back )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def deleteToko( self, event ):
 		event.Skip()
 
 	def back( self, event ):
@@ -453,7 +553,7 @@ class DataManagerFrame ( wx.Frame ):
 		self.dataManager = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataManager.CreateGrid( 5, 5 )
+		self.dataManager.CreateGrid( 5, 3 )
 		self.dataManager.EnableEditing( True )
 		self.dataManager.EnableGridLines( True )
 		self.dataManager.EnableDragGridSize( False )
@@ -977,106 +1077,6 @@ class TambahProdukFrame ( wx.Frame ):
 
 
 ###########################################################################
-## Class DetailProdukFrame
-###########################################################################
-
-class DetailProdukFrame ( wx.Frame ):
-
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 720,480 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
-		self.SetBackgroundColour( wx.Colour( 10, 190, 154 ) )
-
-		bSizer4 = wx.BoxSizer( wx.VERTICAL )
-
-
-		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
-
-		self.m_staticText101 = wx.StaticText( self, wx.ID_ANY, u"DETAIL PRODUK", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText101.Wrap( -1 )
-
-		self.m_staticText101.SetFont( wx.Font( 24, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_staticText101.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-
-		bSizer4.Add( self.m_staticText101, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 15 )
-
-		fgSizer5 = wx.FlexGridSizer( 0, 2, 0, 0 )
-		fgSizer5.SetFlexibleDirection( wx.BOTH )
-		fgSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
-
-		fgSizer5.SetMinSize( wx.Size( -1,80 ) )
-		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"ID TOKO", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText11.Wrap( -1 )
-
-		self.m_staticText11.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-
-		fgSizer5.Add( self.m_staticText11, 0, wx.ALL, 5 )
-
-		self.m_textCtrl32 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer5.Add( self.m_textCtrl32, 0, wx.ALL, 5 )
-
-		self.m_staticText14 = wx.StaticText( self, wx.ID_ANY, u"ALAMAT", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText14.Wrap( -1 )
-
-		self.m_staticText14.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_staticText14.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-
-		fgSizer5.Add( self.m_staticText14, 0, wx.ALL, 5 )
-
-		self.m_textCtrl33 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer5.Add( self.m_textCtrl33, 0, wx.ALL, 5 )
-
-
-		bSizer4.Add( fgSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
-
-		bSizer5 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_button5 = wx.Button( self, wx.ID_ANY, u"Hapus", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
-		self.m_button5.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_button5.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.m_button5.SetBackgroundColour( wx.Colour( 255, 51, 56 ) )
-
-		bSizer5.Add( self.m_button5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
-
-		self.m_button51 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
-		self.m_button51.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_button51.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.m_button51.SetBackgroundColour( wx.Colour( 79, 203, 12 ) )
-
-		bSizer5.Add( self.m_button51, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-
-		bSizer4.Add( bSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
-
-
-		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
-
-
-		self.SetSizer( bSizer4 )
-		self.Layout()
-
-		self.Centre( wx.BOTH )
-
-		# Connect Events
-		self.m_button5.Bind( wx.EVT_BUTTON, self.createProduk )
-		self.m_button51.Bind( wx.EVT_BUTTON, self.back )
-
-	def __del__( self ):
-		pass
-
-
-	# Virtual event handlers, overide them in your derived class
-	def createProduk( self, event ):
-		event.Skip()
-
-	def back( self, event ):
-		event.Skip()
-
-
-###########################################################################
 ## Class DataKasirFrame
 ###########################################################################
 
@@ -1111,7 +1111,7 @@ class DataKasirFrame ( wx.Frame ):
 		self.dataKasir = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataKasir.CreateGrid( 5, 5 )
+		self.dataKasir.CreateGrid( 5, 3 )
 		self.dataKasir.EnableEditing( True )
 		self.dataKasir.EnableGridLines( True )
 		self.dataKasir.EnableDragGridSize( False )
@@ -1424,7 +1424,7 @@ class DataTransaksiFrame ( wx.Frame ):
 		self.dataTransaksi = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
 		# Grid
-		self.dataTransaksi.CreateGrid( 5, 5 )
+		self.dataTransaksi.CreateGrid( 5, 3 )
 		self.dataTransaksi.EnableEditing( True )
 		self.dataTransaksi.EnableGridLines( True )
 		self.dataTransaksi.EnableDragGridSize( False )

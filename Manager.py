@@ -38,7 +38,6 @@ class Manager(View.ManagerFrame):
 class DataProduk(View.DataProdukFrame):
     def __init__(self,parent):
         super().__init__(parent)
-        self.dataProduk.CreateGrid( 5, 5 )
         self.dataProduk.SetColLabelValue( 0, u"ID" )
         self.dataProduk.SetColLabelValue( 1, u"Jenis" )
         self.dataProduk.SetColLabelValue( 2, u"Merk" )
