@@ -46,26 +46,64 @@ class Kasir(View.KasirFrame):
     def exit(self,event):
         self.Destroy()
         from main import Login
+        frame=Login(None)
+        frame.Show()
         
 class DataTransaksi(View.DataTransaksiFrame):
     def __init__(self, parent, idUser):
         super().__init__(parent)
-        self.dataTransaksi.CreateGrid( 5, 3 )
+        self.idUser = idUser
+
         self.dataTransaksi.SetColLabelValue( 0, u"ID" )
         self.dataTransaksi.SetColLabelValue( 1, u"Tanggal" )
         self.dataTransaksi.SetColLabelValue( 2, u"ID User" )
-        self.idUser = idUser
         query = f'SELECT * FROM transaksi'
         curs.execute(query)
         hasil = curs.fetchall()
+        for baris in hasil:
+             self.dataTransaksi.AppendRows(1)
         for a in range (3) :
-            self.baris = 0
+            baris = 0
             for row in hasil:
-                self.dataTransaksi.SetCellValue(self.baris, a, str(row[a]))
-                self.baris = self.baris+1
+                self.dataTransaksi.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
+    
+    def detailTransaksi(self, event):
+        idTransaksi = self.dataTransaksi_input.GetValue()
+        frame = DetailTransaksi(parent=None, idUser=self.idUser, id=idTransaksi)
+        frame.Show()
+        self.Destroy()
     
     def back( self,event):
         frame = Kasir(parent=None, idUser=self.idUser)
+        frame.Show()
+        self.Destroy()
+
+class DetailTransaksi(View.DetailTransaksiFrame):
+    def __init__(self, parent, idUser, id):
+        super().__init__(parent)
+        self.idUser = idUser
+        self.idTransaksi = id
+
+        self.detailTransaksi.SetColLabelValue( 0, u"ID" )
+        self.detailTransaksi.SetColLabelValue( 1, u"ID Transaksi" )
+        self.detailTransaksi.SetColLabelValue( 2, u"Produk" )
+        self.detailTransaksi.SetColLabelValue( 2, u"Jumlah Produk" )
+        
+        query = f'SELECT order_transaksi.idOrder, order_transaksi.idTransaksi, produk.merk, order_transaksi.jumlahProduk FROM order_transaksi INNER JOIN produk ON order_transaksi.idProduk = produk.idProduk WHERE order_transaksi.idTransaksi = {self.idTransaksi}'
+        curs.execute(query)
+        hasil = curs.fetchall()
+
+        for baris in hasil:
+             self.detailTransaksi.AppendRows(1)
+        for a in range (4) :
+            baris = 0
+            for row in hasil:
+                self.detailTransaksi.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
+
+    def back( self,event):
+        frame = DataTransaksi(parent=None, idUser=self.idUser)
         frame.Show()
         self.Destroy()
 

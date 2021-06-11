@@ -41,8 +41,6 @@ class Login(View.LoginFrame):
         else:
             wx.MessageBox(f'Username dan Password Salah')
 
-
-
 app = wx.App()
 frame = Login(None)
 frame.Show()

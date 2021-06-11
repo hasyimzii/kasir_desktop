@@ -32,6 +32,8 @@ class Pemilik(View.PemilikFrame):
     def exit( self, event ):
         self.Destroy()
         from main import Login
+        frame=Login(None)
+        frame.Show()
 
 class DataToko(View.DataTokoFrame):
     def __init__(self,parent):
@@ -41,11 +43,13 @@ class DataToko(View.DataTokoFrame):
         query = f'SELECT * FROM toko WHERE idToko>=2'
         curs.execute(query)
         hasil = curs.fetchall()
+        for baris in hasil:
+             self.dataToko.AppendRows(1)
         for a in range (2) :
-            self.baris = 0
+            baris = 0
             for row in hasil:
-                self.dataToko.SetCellValue(self.baris, a, str(row[a]))
-                self.baris = self.baris+1
+                self.dataToko.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
     
     def detailToko( self, event ):
         idToko = self.dataToko_input.GetValue()
@@ -111,17 +115,54 @@ class DataManager(View.DataManagerFrame):
         query = f'SELECT idUser,username,idToko FROM user WHERE (jabatan="manager")'
         curs.execute(query)
         hasil = curs.fetchall()
+        for baris in hasil:
+             self.dataManager.AppendRows(1)
         for a in range (3) :
-            self.baris = 0
+            baris = 0
             for row in hasil:
-                self.dataManager.SetCellValue(self.baris, a, str(row[a]))
-                self.baris = self.baris+1
+                self.dataManager.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
+
+    def detailManager(self, event):
+        idManager = self.dataManager_input.GetValue()
+        frame = DetailManager(parent=None, id=idManager)
+        frame.Show()
+        self.Destroy()
 
     def back( self,event):
         frame = Pemilik(None)
         frame.Show()
         self.Destroy()
 
+class DetailManager(View.DetailManagerFrame):
+    def __init__(self, parent, id):
+        super().__init__(parent)
+        self.idManager = id
+
+        query = f'SELECT user.idUser, user.username, toko.alamat FROM user INNER JOIN toko ON user.idToko = toko.idToko WHERE user.idUser = {self.idManager}'
+        curs.execute(query)
+        hasil = curs.fetchall()
+
+        self.dmanager_input1.SetValue(str(hasil[0][0]))
+        self.dmanager_input2.SetValue(str(hasil[0][1]))
+        self.dmanager_input3.SetValue(str(hasil[0][2]))
+    
+    def deleteManager(self, event):
+        dlg = wx.MessageDialog(self, 'Hapus Data?', 'Information', style=wx.YES_NO)
+        retval = dlg.ShowModal()
+        if retval == wx.ID_YES:
+            query = f'DELETE FROM user WHERE idUser = {self.idManager}'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menghapus!')
+        else :
+            pass
+    
+    def back( self,event):
+        frame = DataManager(None)
+        frame.Show()
+        self.Destroy()
+    
 class TambahManager(View.TambahManagerFrame):
     def back( self,event):
         frame = Pemilik(None)

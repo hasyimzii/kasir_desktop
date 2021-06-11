@@ -34,6 +34,8 @@ class Manager(View.ManagerFrame):
     def exit(self,event):
         self.Destroy()
         from main import Login
+        frame=Login(None)
+        frame.Show()
 
 class DataProduk(View.DataProdukFrame):
     def __init__(self,parent):
@@ -46,16 +48,64 @@ class DataProduk(View.DataProdukFrame):
         query = f'SELECT * FROM produk'
         curs.execute(query)
         hasil = curs.fetchall()
+        for baris in hasil:
+             self.dataProduk.AppendRows(1)
         for a in range (5) :
-            self.baris = 0
+            baris = 0
             for row in hasil:
-                self.dataProduk.SetCellValue(self.baris, a, str(row[a]))
-                self.baris = self.baris+1
+                self.dataProduk.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
+
+    def detailProduk( self, event ):
+        idProduk = self.dataProduk_input.GetValue()
+        frame = DetailProduk(parent=None, id=idProduk)
+        frame.Show()
+        self.Destroy()
         
     def back( self,event):
         frame = Manager(None)
         frame.Show()
-        self.Destroy() 
+        self.Destroy()
+
+class DetailProduk(View.DetailProdukFrame):
+    def __init__(self, parent, id):
+        super().__init__(parent)
+        self.idProduk = id
+
+        query = f'SELECT * FROM produk WHERE idProduk = {self.idProduk}'
+        curs.execute(query)
+        hasil = curs.fetchall()
+
+        self.dproduk_input1.SetValue(str(hasil[0][1]))
+        self.dproduk_input2.SetValue(str(hasil[0][2]))
+        self.dproduk_input3.SetValue(str(hasil[0][3]))
+        self.dproduk_input4.SetValue(str(hasil[0][4]))
+    
+    def editProduk(self, event):
+        jenis = self.dproduk_input1.GetValue()
+        merk = self.dproduk_input2.GetValue()
+        harga = self.dproduk_input3.GetValue()
+        stok = self.dproduk_input4.GetValue()
+        query = f'UPDATE produk SET jenis="{jenis}", merk="{merk}", harga="{harga}", stok="{stok}" WHERE idProduk = {self.idProduk}'
+        curs.execute(query)
+        conn.commit()
+        wx.MessageBox(f'Berhasil Mengedit!')
+    
+    def deleteProduk(self, event):
+        dlg = wx.MessageDialog(self, 'Hapus Data?', 'Information', style=wx.YES_NO)
+        retval = dlg.ShowModal()
+        if retval == wx.ID_YES:
+            query = f'DELETE FROM produk WHERE idProduk = {self.idProduk}'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menghapus!')
+        else :
+            pass
+    
+    def back( self,event):
+        frame = DataProduk(None)
+        frame.Show()
+        self.Destroy()
 
 class TambahProduk(View.TambahProdukFrame):
     def back( self,event):
@@ -76,21 +126,57 @@ class TambahProduk(View.TambahProdukFrame):
 class DataKasir(View.DataKasirFrame):
     def __init__(self,parent):
         super().__init__(parent)
-        self.dataKasir.CreateGrid( 5, 3 )
         self.dataKasir.SetColLabelValue( 0, u"ID" )
         self.dataKasir.SetColLabelValue( 1, u"Username" )
         self.dataKasir.SetColLabelValue( 2,u"ID Toko" )
         query = f'SELECT idUser,username,idToko FROM user WHERE (jabatan="kasir")'
         curs.execute(query)
         hasil = curs.fetchall()
+        for baris in hasil:
+             self.dataKasir.AppendRows(1)
         for a in range (3) :
-            self.baris = 0
+            baris = 0
             for row in hasil:
-                self.dataKasir.SetCellValue(self.baris, a, str(row[a]))
-                self.baris = self.baris+1
+                self.dataKasir.SetCellValue(baris, a, str(row[a]))
+                baris = baris+1
+
+    def detailKasir(self, event):
+        idKasir = self.dataKasir_input.GetValue()
+        frame = DetailKasir(parent=None, id=idKasir)
+        frame.Show()
+        self.Destroy()
                 
     def back( self,event):
         frame = Manager(None)
+        frame.Show()
+        self.Destroy()
+
+class DetailKasir(View.DetailKasirFrame):
+    def __init__(self, parent, id):
+        super().__init__(parent)
+        self.idKasir = id
+
+        query = f'SELECT user.idUser, user.username, toko.alamat FROM user INNER JOIN toko ON user.idToko = toko.idToko WHERE user.idUser = {self.idKasir}'
+        curs.execute(query)
+        hasil = curs.fetchall()
+
+        self.dkasir_input1.SetValue(str(hasil[0][0]))
+        self.dkasir_input2.SetValue(str(hasil[0][1]))
+        self.dkasir_input3.SetValue(str(hasil[0][2]))
+    
+    def deleteKasir(self, event):
+        dlg = wx.MessageDialog(self, 'Hapus Data?', 'Information', style=wx.YES_NO)
+        retval = dlg.ShowModal()
+        if retval == wx.ID_YES:
+            query = f'DELETE FROM user WHERE idUser = {self.idKasir}'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menghapus!')
+        else :
+            pass
+    
+    def back( self,event):
+        frame = DataKasir(None)
         frame.Show()
         self.Destroy()
 
