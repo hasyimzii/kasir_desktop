@@ -108,6 +108,9 @@ class TambahToko(View.TambahTokoFrame):
 		curs.execute(query)
 		conn.commit()
 		wx.MessageBox(f'Berhasil Menambahkan!')
+		frame = Pemilik(None)
+		frame.Show()
+		self.Destroy()
 		
 class DataManager(View.DataManagerFrame):
     def __init__(self,parent):
@@ -183,5 +186,8 @@ class TambahManager(View.TambahManagerFrame):
             curs.execute(query)
             conn.commit()
             wx.MessageBox(f'Berhasil Menambahkan!')
+            frame = Pemilik(None)
+            frame.Show()
+            self.Destroy()
 
 

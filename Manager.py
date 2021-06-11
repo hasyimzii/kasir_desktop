@@ -125,6 +125,9 @@ class TambahProduk(View.TambahProdukFrame):
         curs.execute(query)
         conn.commit()
         wx.MessageBox(f'Berhasil Menambahkan!')
+        frame = Manager(None)
+        frame.Show()
+        self.Destroy()
 		
 class DataKasir(View.DataKasirFrame):
     def __init__(self,parent):
@@ -200,4 +203,7 @@ class TambahKasir(View.TambahKasirFrame):
         curs.execute(query)
         conn.commit()
         wx.MessageBox(f'Berhasil Menambahkan!')
+        frame = Manager(None)
+        frame.Show()
+        self.Destroy()
         
