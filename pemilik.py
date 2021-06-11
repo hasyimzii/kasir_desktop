@@ -36,6 +36,9 @@ class Pemilik(View.PemilikFrame):
 class DataToko(View.DataTokoFrame):
     def __init__(self,parent):
         super().__init__(parent)
+        self.dataToko.CreateGrid( 5, 2 )
+        self.dataToko.SetColLabelValue( 0, u"ID" )
+        self.dataToko.SetColLabelValue( 1, u"Alamat" )
         query = f'SELECT * FROM toko WHERE idToko>=2'
         curs.execute(query)
         hasil = curs.fetchall()
@@ -69,6 +72,10 @@ class TambahToko(View.TambahTokoFrame):
 class DataManager(View.DataManagerFrame):
     def __init__(self,parent):
         super().__init__(parent)
+        self.dataManager.CreateGrid( 5, 3 )
+        self.dataManager.SetColLabelValue( 0, u"ID" )
+        self.dataManager.SetColLabelValue( 1, u"Username" )
+        self.dataManager.SetColLabelValue( 2, u"IdToko" )
         query = f'SELECT idUser,username,idToko FROM user WHERE (jabatan="manager")'
         curs.execute(query)
         hasil = curs.fetchall()
