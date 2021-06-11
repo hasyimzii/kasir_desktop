@@ -12,22 +12,22 @@ class Pemilik(View.PemilikFrame):
         super().__init__(parent)
         
     def showToko( self, event ):
-        self.subframe = DataToko(None)
-        self.subframe.Show()
+        frame = DataToko(None)
+        frame.Show()
         self.Destroy()
 
     def createToko( self, event ):
-        self.subframe = TambahToko(None)
-        self.subframe.Show()
+        frame = TambahToko(None)
+        frame.Show()
         self.Destroy()
 
     def showManager( self, event ):
-        self.subframe = DataManager(None)
-        self.subframe.Show()
+        frame = DataManager(None)
+        frame.Show()
         self.Destroy()
     def createManager( self, event ):
-        self.subframe = TambahManager(None)
-        self.subframe.Show()
+        frame = TambahManager(None)
+        frame.Show()
         self.Destroy()
     def exit( self, event ):
         self.Destroy()
@@ -47,19 +47,27 @@ class DataToko(View.DataTokoFrame):
             for row in hasil:
                 self.dataToko.SetCellValue(self.baris, a, str(row[a]))
                 self.baris = self.baris+1
-        
-    def back( self,event):
-        self.subframe = Pemilik(None)
-        self.subframe.Show()
+    
+    def detailToko( self, event ):
+        idToko = self.dataToko_input.GetValue()
+        frame = DetailToko(None)
+        frame.Show()
         self.Destroy()
+
+    def back( self,event):
+        frame = Pemilik(None)
+        frame.Show()
+        self.Destroy()
+
+class DetailToko(View.DetailTokoFrame)
 
 class TambahToko(View.TambahTokoFrame):
 	def __init__(self, parent):
 		super().__init__(parent)
 		
 	def back( self,event):
-		self.subframe = Pemilik(None)
-		self.subframe.Show()
+		frame = Pemilik(None)
+		frame.Show()
 		self.Destroy()
 
 	def createToko( self, event ):
@@ -86,14 +94,14 @@ class DataManager(View.DataManagerFrame):
                 self.baris = self.baris+1
 
     def back( self,event):
-        self.subframe = Pemilik(None)
-        self.subframe.Show()
+        frame = Pemilik(None)
+        frame.Show()
         self.Destroy()
 
 class TambahManager(View.TambahManagerFrame):
     def back( self,event):
-        self.subframe = Pemilik(None)
-        self.subframe.Show()
+        frame = Pemilik(None)
+        frame.Show()
         self.Destroy()
 
     def createManager( self, event ):

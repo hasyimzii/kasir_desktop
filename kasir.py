@@ -17,8 +17,8 @@ class Kasir(View.KasirFrame):
         self.idUser = idUser
 
     def showTransaksi(self,event):
-        self.subframe = DataTransaksi(parent=None, idUser=self.idUser)
-        self.subframe.Show()
+        frame = DataTransaksi(parent=None, idUser=self.idUser)
+        frame.Show()
         self.Destroy()
 
     def createTransaksi(self,event):
@@ -28,8 +28,8 @@ class Kasir(View.KasirFrame):
         curs.execute(query)
         conn.commit()
 
-        self.subframe = TambahTransaksi(parent=None, idUser=self.idUser)
-        self.subframe.Show()
+        frame = TambahTransaksi(parent=None, idUser=self.idUser)
+        frame.Show()
         self.Destroy()
 
     def showLaporan(self,event):
@@ -65,8 +65,8 @@ class DataTransaksi(View.DataTransaksiFrame):
                 self.baris = self.baris+1
     
     def back( self,event):
-        self.subframe = Kasir(parent=None, idUser=self.idUser)
-        self.subframe.Show()
+        frame = Kasir(parent=None, idUser=self.idUser)
+        frame.Show()
         self.Destroy()
 
 class TambahTransaksi(View.TambahTransaksiFrame):
@@ -76,8 +76,8 @@ class TambahTransaksi(View.TambahTransaksiFrame):
         self.total = 0
 
     def back( self,event):
-        self.subframe = Kasir(parent=None, idUser=self.idUser)
-        self.subframe.Show()
+        frame = Kasir(parent=None, idUser=self.idUser)
+        frame.Show()
         self.Destroy()
 
     def tambahOrder( self, event ):

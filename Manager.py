@@ -12,23 +12,23 @@ class Manager(View.ManagerFrame):
         super().__init__(parent)
         
     def showProduk(self,event):
-        self.subframe = DataProduk(None)
-        self.subframe.Show()
+        frame = DataProduk(None)
+        frame.Show()
         self.Destroy()
         
     def createProduk(self,event):
-        self.subframe =TambahProduk(None)
-        self.subframe.Show()
+        frame =TambahProduk(None)
+        frame.Show()
         self.Destroy()
 
     def showKasir(self,event):
-        self.subframe =DataKasir(None)
-        self.subframe.Show()
+        frame =DataKasir(None)
+        frame.Show()
         self.Destroy()
 
     def createKasir(self,event):
-        self.subframe=TambahKasir(None)
-        self.subframe.Show()
+        frame=TambahKasir(None)
+        frame.Show()
         self.Destroy()
 
     def exit(self,event):
@@ -54,14 +54,14 @@ class DataProduk(View.DataProdukFrame):
                 self.baris = self.baris+1
         
     def back( self,event):
-        self.subframe = Manager(None)
-        self.subframe.Show()
+        frame = Manager(None)
+        frame.Show()
         self.Destroy() 
 
 class TambahProduk(View.TambahProdukFrame):
     def back( self,event):
-        self.subframe = Manager(None)
-        self.subframe.Show()
+        frame = Manager(None)
+        frame.Show()
         self.Destroy()
         
     def createProduk( self, event ):
@@ -91,14 +91,14 @@ class DataKasir(View.DataKasirFrame):
                 self.baris = self.baris+1
                 
     def back( self,event):
-        self.subframe = Manager(None)
-        self.subframe.Show()
+        frame = Manager(None)
+        frame.Show()
         self.Destroy()
 
 class TambahKasir(View.TambahKasirFrame):
     def back( self,event):
-        self.subframe = Manager(None)
-        self.subframe.Show()
+        frame = Manager(None)
+        frame.Show()
         self.Destroy()
     
     def createKasir( self, event ):
