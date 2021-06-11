@@ -83,7 +83,7 @@ class LoginFrame ( wx.Frame ):
 		self.m_button4 = wx.Button( self, wx.ID_ANY, u"Login", wx.DefaultPosition, wx.Size( 245,-1 ), 0 )
 		self.m_button4.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
 		self.m_button4.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BACKGROUND ) )
-		self.m_button4.SetBackgroundColour( wx.Colour( 255, 255, 128 ) )
+		self.m_button4.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 
 		bSizer3.Add( self.m_button4, 0, wx.ALIGN_CENTER|wx.ALL, 5 )
 
@@ -258,7 +258,7 @@ class DataTokoFrame ( wx.Frame ):
 		self.dataToko.EnableEditing( True )
 		self.dataToko.EnableGridLines( True )
 		self.dataToko.EnableDragGridSize( False )
-		self.dataToko.SetMargins( 5, 0 )
+		self.dataToko.SetMargins( 0, 0 )
 
 		# Columns
 		self.dataToko.EnableDragColMove( False )
@@ -604,7 +604,7 @@ class TambahManagerFrame ( wx.Frame ):
 		self.m_button5 = wx.Button( self, wx.ID_ANY, u"Tambahkan", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
 		self.m_button5.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
 		self.m_button5.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.m_button5.SetBackgroundColour( wx.Colour( 253, 249, 89 ) )
+		self.m_button5.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 
 		bSizer5.Add( self.m_button5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 
@@ -977,6 +977,106 @@ class TambahProdukFrame ( wx.Frame ):
 
 
 ###########################################################################
+## Class DetailProdukFrame
+###########################################################################
+
+class DetailProdukFrame ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 720,480 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_MENU ) )
+		self.SetBackgroundColour( wx.Colour( 10, 190, 154 ) )
+
+		bSizer4 = wx.BoxSizer( wx.VERTICAL )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+		self.m_staticText101 = wx.StaticText( self, wx.ID_ANY, u"DETAIL PRODUK", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText101.Wrap( -1 )
+
+		self.m_staticText101.SetFont( wx.Font( 24, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText101.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		bSizer4.Add( self.m_staticText101, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 15 )
+
+		fgSizer5 = wx.FlexGridSizer( 0, 2, 0, 0 )
+		fgSizer5.SetFlexibleDirection( wx.BOTH )
+		fgSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+		fgSizer5.SetMinSize( wx.Size( -1,80 ) )
+		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"ID TOKO", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11.Wrap( -1 )
+
+		self.m_staticText11.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText11.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		fgSizer5.Add( self.m_staticText11, 0, wx.ALL, 5 )
+
+		self.m_textCtrl32 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer5.Add( self.m_textCtrl32, 0, wx.ALL, 5 )
+
+		self.m_staticText14 = wx.StaticText( self, wx.ID_ANY, u"ALAMAT", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText14.Wrap( -1 )
+
+		self.m_staticText14.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_staticText14.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+
+		fgSizer5.Add( self.m_staticText14, 0, wx.ALL, 5 )
+
+		self.m_textCtrl33 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		fgSizer5.Add( self.m_textCtrl33, 0, wx.ALL, 5 )
+
+
+		bSizer4.Add( fgSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
+
+		bSizer5 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_button5 = wx.Button( self, wx.ID_ANY, u"Hapus", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
+		self.m_button5.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_button5.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.m_button5.SetBackgroundColour( wx.Colour( 255, 51, 56 ) )
+
+		bSizer5.Add( self.m_button5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
+
+		self.m_button51 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
+		self.m_button51.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.m_button51.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.m_button51.SetBackgroundColour( wx.Colour( 79, 203, 12 ) )
+
+		bSizer5.Add( self.m_button51, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer4.Add( bSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
+
+
+		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+		self.SetSizer( bSizer4 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.m_button5.Bind( wx.EVT_BUTTON, self.createProduk )
+		self.m_button51.Bind( wx.EVT_BUTTON, self.back )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, overide them in your derived class
+	def createProduk( self, event ):
+		event.Skip()
+
+	def back( self, event ):
+		event.Skip()
+
+
+###########################################################################
 ## Class DataKasirFrame
 ###########################################################################
 
@@ -1162,7 +1262,7 @@ class TambahKasirFrame ( wx.Frame ):
 		self.m_button5 = wx.Button( self, wx.ID_ANY, u"Tambahkan", wx.DefaultPosition, wx.Size( 130,-1 ), 0 )
 		self.m_button5.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
 		self.m_button5.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.m_button5.SetBackgroundColour( wx.Colour( 253, 249, 89 ) )
+		self.m_button5.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 
 		bSizer5.Add( self.m_button5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
 
@@ -1415,7 +1515,7 @@ class DetailTransaksiFrame ( wx.Frame ):
 
 		bSizer4.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-		self.m_staticText1011 = wx.StaticText( self, wx.ID_ANY, u"DATA TRANSAKSI", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText1011 = wx.StaticText( self, wx.ID_ANY, u"DETAIL TRANSAKSI", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText1011.Wrap( -1 )
 
 		self.m_staticText1011.SetFont( wx.Font( 24, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
@@ -1424,10 +1524,6 @@ class DetailTransaksiFrame ( wx.Frame ):
 		bSizer4.Add( self.m_staticText1011, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 		bSizer38 = wx.BoxSizer( wx.VERTICAL )
-
-		fgSizer29 = wx.FlexGridSizer( 0, 2, 0, 0 )
-		fgSizer29.SetFlexibleDirection( wx.BOTH )
-		fgSizer29.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
 		self.dataTransaksi = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -1453,26 +1549,7 @@ class DetailTransaksiFrame ( wx.Frame ):
 
 		# Cell Defaults
 		self.dataTransaksi.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		fgSizer29.Add( self.dataTransaksi, 0, wx.ALL, 5 )
-
-		bSizer41 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_staticText86 = wx.StaticText( self, wx.ID_ANY, u"MASUKKAN ID", wx.DefaultPosition, wx.Size( 150,-1 ), 0 )
-		self.m_staticText86.Wrap( -1 )
-
-		bSizer41.Add( self.m_staticText86, 0, wx.ALL, 5 )
-
-		self.dataTransaksi_input = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 90,-1 ), 0 )
-		bSizer41.Add( self.dataTransaksi_input, 0, wx.ALL, 5 )
-
-		self.m_button48 = wx.Button( self, wx.ID_ANY, u"Detail", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer41.Add( self.m_button48, 0, wx.ALL, 5 )
-
-
-		fgSizer29.Add( bSizer41, 1, wx.EXPAND, 5 )
-
-
-		bSizer38.Add( fgSizer29, 0, wx.EXPAND, 5 )
+		bSizer38.Add( self.dataTransaksi, 0, wx.ALL, 5 )
 
 		self.m_button44 = wx.Button( self, wx.ID_ANY, u"Back", wx.DefaultPosition, wx.Size( 100,-1 ), 0 )
 		bSizer38.Add( self.m_button44, 0, wx.ALL, 5 )
@@ -1490,7 +1567,6 @@ class DetailTransaksiFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
-		self.m_button48.Bind( wx.EVT_BUTTON, self.detailTransaksi )
 		self.m_button44.Bind( wx.EVT_BUTTON, self.back )
 
 	def __del__( self ):
@@ -1498,9 +1574,6 @@ class DetailTransaksiFrame ( wx.Frame ):
 
 
 	# Virtual event handlers, overide them in your derived class
-	def detailTransaksi( self, event ):
-		event.Skip()
-
 	def back( self, event ):
 		event.Skip()
 
