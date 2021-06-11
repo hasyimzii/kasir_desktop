@@ -1996,7 +1996,7 @@ class TambahTransaksiFrame ( wx.Frame ):
 		self.m_button67 = wx.Button( self, wx.ID_ANY, u"Tambahkan", wx.DefaultPosition, wx.Size( 150,-1 ), 0 )
 		fgSizer5.Add( self.m_button67, 0, wx.ALL, 5 )
 
-		self.m_staticText121 = wx.StaticText( self, wx.ID_ANY, u"TOTAL BIAYA", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText121 = wx.StaticText( self, wx.ID_ANY, u"TOTAL HARGA", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText121.Wrap( -1 )
 
 		self.m_staticText121.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
@@ -2004,13 +2004,13 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 		fgSizer5.Add( self.m_staticText121, 0, wx.ALL, 5 )
 
-		self.m_staticText122 = wx.StaticText( self, wx.ID_ANY, u"0", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText122.Wrap( -1 )
+		self.totalHarga = wx.StaticText( self, wx.ID_ANY, u"0", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.totalHarga.Wrap( -1 )
 
-		self.m_staticText122.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_staticText122.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.totalHarga.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.totalHarga.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
 
-		fgSizer5.Add( self.m_staticText122, 0, wx.ALL, 5 )
+		fgSizer5.Add( self.totalHarga, 0, wx.ALL, 5 )
 
 		self.m_staticText123 = wx.StaticText( self, wx.ID_ANY, u"TOTAL BAYAR", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_staticText123.Wrap( -1 )
@@ -2037,13 +2037,13 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 		fgSizer5.Add( self.m_staticText124, 0, wx.ALL, 5 )
 
-		self.m_staticText125 = wx.StaticText( self, wx.ID_ANY, u"0", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText125.Wrap( -1 )
+		self.sisaKembalian = wx.StaticText( self, wx.ID_ANY, u"0", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.sisaKembalian.Wrap( -1 )
 
-		self.m_staticText125.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
-		self.m_staticText125.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.sisaKembalian.SetFont( wx.Font( 12, wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, "Tekton Pro Ext" ) )
+		self.sisaKembalian.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
 
-		fgSizer5.Add( self.m_staticText125, 0, wx.ALL, 5 )
+		fgSizer5.Add( self.sisaKembalian, 0, wx.ALL, 5 )
 
 
 		bSizer4.Add( fgSizer5, 0, wx.ALIGN_CENTER_HORIZONTAL|wx.ALL, 5 )
@@ -2074,7 +2074,6 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 		# Connect Events
 		self.m_button67.Bind( wx.EVT_BUTTON, self.tambahOrder )
-		self.transaksi_input3.Bind( wx.EVT_TEXT, self.transaksi_input3 )
 		self.m_button68.Bind( wx.EVT_BUTTON, self.bayar )
 		self.m_button51.Bind( wx.EVT_BUTTON, self.back )
 
@@ -2084,9 +2083,6 @@ class TambahTransaksiFrame ( wx.Frame ):
 
 	# Virtual event handlers, overide them in your derived class
 	def tambahOrder( self, event ):
-		event.Skip()
-
-	def transaksi_input3( self, event ):
 		event.Skip()
 
 	def bayar( self, event ):
