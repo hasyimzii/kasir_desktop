@@ -50,6 +50,10 @@ class Kasir(View.KasirFrame):
 class DataTransaksi(View.DataTransaksiFrame):
     def __init__(self, parent, idUser):
         super().__init__(parent)
+        self.dataTransaksi.CreateGrid( 5, 3 )
+        self.dataTransaksi.SetColLabelValue( 0, u"ID" )
+        self.dataTransaksi.SetColLabelValue( 1, u"Tanggal" )
+        self.dataTransaksi.SetColLabelValue( 2, u"ID User" )
         self.idUser = idUser
         query = f'SELECT * FROM transaksi'
         curs.execute(query)

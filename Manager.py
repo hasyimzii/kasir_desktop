@@ -38,6 +38,12 @@ class Manager(View.ManagerFrame):
 class DataProduk(View.DataProdukFrame):
     def __init__(self,parent):
         super().__init__(parent)
+        self.dataProduk.CreateGrid( 5, 5 )
+        self.dataProduk.SetColLabelValue( 0, u"ID" )
+        self.dataProduk.SetColLabelValue( 1, u"Jenis" )
+        self.dataProduk.SetColLabelValue( 2, u"Merk" )
+        self.dataProduk.SetColLabelValue( 3, u"Harga" )
+        self.dataProduk.SetColLabelValue( 4, u"Stok" )
         query = f'SELECT * FROM produk'
         curs.execute(query)
         hasil = curs.fetchall()
@@ -71,7 +77,11 @@ class TambahProduk(View.TambahProdukFrame):
 class DataKasir(View.DataKasirFrame):
     def __init__(self,parent):
         super().__init__(parent)
-        query = f'SELECT idUser,username,idToko FROM user'
+        self.dataKasir.CreateGrid( 5, 3 )
+        self.dataKasir.SetColLabelValue( 0, u"ID" )
+        self.dataKasir.SetColLabelValue( 1, u"Username" )
+        self.dataKasir.SetColLabelValue( 2,u"ID Toko" )
+        query = f'SELECT idUser,username,idToko FROM user WHERE (jabatan="kasir")'
         curs.execute(query)
         hasil = curs.fetchall()
         for a in range (3) :
