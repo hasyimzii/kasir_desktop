@@ -25,10 +25,12 @@ class Pemilik(View.PemilikFrame):
         frame = DataManager(None)
         frame.Show()
         self.Destroy()
+
     def createManager( self, event ):
         frame = TambahManager(None)
         frame.Show()
         self.Destroy()
+        
     def exit( self, event ):
         self.Destroy()
         from main import Login

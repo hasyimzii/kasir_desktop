@@ -8,9 +8,6 @@ from datetime import datetime
 conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="pbo2_toko")
 curs = conn.cursor()
 
-conn = mysql.connector.connect(host="localhost",port=3306,user="root",password="",database="pbo2_toko")
-curs = conn.cursor()
-
 class Kasir(View.KasirFrame):
     def __init__(self, parent, idUser):
         super().__init__(parent)
@@ -88,7 +85,7 @@ class DetailTransaksi(View.DetailTransaksiFrame):
         self.detailTransaksi.SetColLabelValue( 0, u"ID" )
         self.detailTransaksi.SetColLabelValue( 1, u"ID Transaksi" )
         self.detailTransaksi.SetColLabelValue( 2, u"Produk" )
-        self.detailTransaksi.SetColLabelValue( 2, u"Jumlah Produk" )
+        self.detailTransaksi.SetColLabelValue( 3, u"Jumlah Produk" )
         
         query = f'SELECT order_transaksi.idOrder, order_transaksi.idTransaksi, produk.merk, order_transaksi.jumlahProduk FROM order_transaksi INNER JOIN produk ON order_transaksi.idProduk = produk.idProduk WHERE order_transaksi.idTransaksi = {self.idTransaksi}'
         curs.execute(query)
