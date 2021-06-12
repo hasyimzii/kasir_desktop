@@ -119,15 +119,22 @@ class TambahProduk(View.TambahProdukFrame):
     def createProduk( self, event ):
         jenis = self.produk_input1.GetValue()
         merk = self.produk_input2.GetValue()
-        harga = self.produk_input3.GetValue()
-        stok = self.produk_input4.GetValue()
-        query = f'INSERT INTO produk(jenis,merk,harga,stok) VALUES("{jenis}", "{merk}","{harga}","{stok}")'
-        curs.execute(query)
-        conn.commit()
-        wx.MessageBox(f'Berhasil Menambahkan!')
-        frame = Manager(None)
-        frame.Show()
-        self.Destroy()
+        harga_ = self.produk_input3.GetValue()
+        stok_ = self.produk_input4.GetValue()
+        try:
+            harga=int(harga_)
+            stok=int(stok_)
+            query = f'INSERT INTO produk(jenis,merk,harga,stok) VALUES("{jenis}", "{merk}","{harga}","{stok}")'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menambahkan!')
+            frame = Manager(None)
+            frame.Show()
+            self.Destroy()
+        except:
+            wx.MessageBox(f'Tipe Data yang dimasukkan salah')
+            self.produk_input3.Clear()
+            self.produk_input4.Clear()
 		
 class DataKasir(View.DataKasirFrame):
     def __init__(self,parent):
@@ -209,7 +216,7 @@ class TambahKasir(View.TambahKasirFrame):
             frame.Show()
             self.Destroy()
         except:
-            wx.MessageBox(f'Data yang dimasukkan salah')
+            wx.MessageBox(f'Tipe Data yang dimasukkan salah')
             self.kasir_input3.Clear()
                     
         
