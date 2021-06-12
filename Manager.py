@@ -198,12 +198,18 @@ class TambahKasir(View.TambahKasirFrame):
     def createKasir( self, event ):
         username = self.kasir_input1.GetValue()
         password = self.kasir_input2.GetValue()
-        idToko = self.kasir_input3.GetValue()
-        query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"kasir"}","{idToko}")'
-        curs.execute(query)
-        conn.commit()
-        wx.MessageBox(f'Berhasil Menambahkan!')
-        frame = Manager(None)
-        frame.Show()
-        self.Destroy()
+        idT = self.kasir_input3.GetValue()
+        try:
+            idToko=int(idT)
+            query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"kasir"}","{idToko}")'
+            curs.execute(query)
+            conn.commit()
+            wx.MessageBox(f'Berhasil Menambahkan!')
+            frame = Manager(None)
+            frame.Show()
+            self.Destroy()
+        except:
+            wx.MessageBox(f'Data yang dimasukkan salah')
+            self.kasir_input3.Clear()
+                    
         

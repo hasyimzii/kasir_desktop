@@ -181,13 +181,20 @@ class TambahManager(View.TambahManagerFrame):
     def createManager( self, event ):
             username = self.manager_input1.GetValue()
             password = self.manager_input2.GetValue()
-            idToko = self.manager_input3.GetValue()
-            query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"manager"}","{idToko}")'
-            curs.execute(query)
-            conn.commit()
-            wx.MessageBox(f'Berhasil Menambahkan!')
-            frame = Pemilik(None)
-            frame.Show()
-            self.Destroy()
+            idT = self.manager_input3.GetValue()
+            try:
+                idToko = int(idT)
+                query = f'INSERT INTO user(username,password,jabatan,idToko) VALUES("{username}", "{password}","{"manager"}","{idToko}")'
+                curs.execute(query)
+                conn.commit()
+                wx.MessageBox(f'Berhasil Menambahkan!')
+                frame = Pemilik(None)
+                frame.Show()
+                self.Destroy()
+            except:
+                wx.MessageBox(f'Data yang dimasukkan salah')
+                self.manager_input3.Clear()
+                    
+                
 
 
