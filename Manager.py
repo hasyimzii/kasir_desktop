@@ -90,6 +90,9 @@ class DetailProduk(View.DetailProdukFrame):
         curs.execute(query)
         conn.commit()
         wx.MessageBox(f'Berhasil Mengedit!')
+        frame = DataProduk(None)
+        frame.Show()
+        self.Destroy()
     
     def deleteProduk(self, event):
         dlg = wx.MessageDialog(self, 'Hapus Data?', 'Information', style=wx.YES_NO)
