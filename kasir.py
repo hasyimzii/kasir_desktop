@@ -125,7 +125,8 @@ class TambahTransaksi(View.TambahTransaksiFrame):
         idProduk = self.transaksi_input1.GetValue()
         jumlahProduk = self.transaksi_input2.GetValue()
         query = f'INSERT INTO order_transaksi(idTransaksi, idProduk, jumlahProduk) VALUES("{idTransaksi[0][0]}", "{idProduk}","{jumlahProduk}")'
-        curs.execute(query)
+        query1 = f'UPDATE produk SET stok=(stok-"{jumlahProduk}") produk WHERE idProduk={idProduk}'
+        curs.execute(query, query1)
         conn.commit()
 
         # get sum produk
